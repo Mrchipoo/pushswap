@@ -6,19 +6,18 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:59:24 by echoubby          #+#    #+#             */
-/*   Updated: 2024/05/21 10:59:27 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:57:12 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../includes/test.h"
 
-#include "../test.h"
-
-void ft_swap_a(walo **head_a)
+void	ft_swap_a(walo **head_a)
 {
-    walo *temp;
-    walo *temp1;
+	walo	*temp;
+	walo	*temp1;
 
-    if (*head_a == NULL ||(*head_a)->next == NULL)
-        return ;
+	if (*head_a == NULL ||(*head_a)->next == NULL)
+		return ;
     temp = (*head_a);
     temp1 = (*head_a)->next;
     (temp->next) = temp1->next;//first node poiting on the next of second node
