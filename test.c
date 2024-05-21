@@ -42,64 +42,6 @@ walo *ft_create_node(int data)
     return (new_node);
 }
 
-void ft_push_2a(walo **head_a,walo **head_b)
-{
-    walo *temp;
-    
-    if (*head_b == NULL)
-        return;
-    else
-    {
-        temp = *head_b;
-        *head_b = (*head_b)->next;
-        temp->next = *head_a;
-        *head_a = temp;
-    }
-    printf("pa\n");
-}
-
-void ft_push_2b(walo **head_a,walo **head_b)
-{
-    walo *temp;
-    
-    if (*head_a == NULL)
-        return;
-    else
-    {
-        temp  = *head_a;
-        *head_a = (*head_a)->next;
-        temp->next = *head_b;
-        *head_b = temp;
-    }
-    printf("pb\n");
-}
-
-void ft_rotate_a(walo **head_a)
-{
-    walo *temp;
-
-    if ((*head_a)->next == NULL)
-        return ;
-    temp = (*head_a);
-    (*head_a) = (*head_a)->next;
-    ft_last_node((temp))->next = temp;
-    temp->next = NULL;
-    printf("ra\n");
-}
-
-void ft_rotate_b(walo **head_b)
-{
-    walo *temp;
-
-    if ((*head_b)->next == NULL)
-        return ;
-    temp = (*head_b);
-    (*head_b) = (*head_b)->next;
-    ft_last_node((temp))->next = temp;
-    temp->next = NULL;
-    printf("rb\n");
-}
-
 int main(int argc, char **argv)
 {
     int i;
@@ -127,12 +69,7 @@ int main(int argc, char **argv)
     ft_push_2b(&head_a,&head_b);
     print_list(head_a);
     print_list(head_b);
-    ft_push_2a(&head_a, &head_b);
-    print_list(head_a);
-    print_list(head_b);
-    ft_rotate_a(&head_a);
-    print_list(head_a);
-    ft_rotate_a(&head_a);
+    ft_swap_both(&head_a, &head_b);
     print_list(head_a);
     print_list(head_b);
     return (0);
