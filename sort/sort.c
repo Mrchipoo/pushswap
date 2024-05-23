@@ -15,7 +15,7 @@ void	ft_small_sort(walo **head)
 {
 	walo	*biggest_node;
 
-	biggest_node = ft_biggest_value(*head);
+	biggest_node = ft_find_biggest(*head);
 	if ((*head) == biggest_node)
 		ft_rotate_a(head);
 	else if ((*head)->next == biggest_node)

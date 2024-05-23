@@ -35,5 +35,6 @@ void    ft_rrr(walo **head_a, walo **head_b);
 void    ft_small_sort(walo **head);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);
-walo    *ft_biggest_value(walo *head);
+walo	*ft_find_biggest(walo *head);
+walo    *ft_find_min(walo *head);
 #endif

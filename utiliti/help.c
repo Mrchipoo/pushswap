@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../includes/test.h"
 
-walo	*ft_biggest_value(walo *head)
+walo	*ft_find_biggest(walo *head)
 {
 	walo	*current;
 	walo	*node;
@@ -32,4 +32,23 @@ walo	*ft_biggest_value(walo *head)
 		}
 	}
 	return (node);
+}
+walo *ft_find_min(walo *head)
+{
+	int min;
+	walo *node_min;
+
+	min = head->data;
+	while (head != NULL)
+	{
+		if (min > head->data)
+		{
+			min = head->data;
+			node_min = head;
+			head = head->next;
+		}
+		else
+			head = head->next;
+	}
+	return (node_min);
 }

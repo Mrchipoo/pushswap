@@ -76,7 +76,8 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	print_list(head_a);
-	ft_small_sort(&head_a);
+	new_node = ft_find_min(head_a);
+	printf("min = %d\n",new_node->data);
 	print_list(head_a);
 
 	return (0);
