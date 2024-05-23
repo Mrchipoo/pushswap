@@ -19,7 +19,7 @@ void    ft_swap(int *a, int *b)
     *a = *b;
     *b = temp;
 }
-void partition(int arr[], int low, int high)
+int ft_partition(int arr[], int low, int high)
 {
     int i;
     int j;
@@ -37,9 +37,18 @@ void partition(int arr[], int low, int high)
         if (i < j)
             ft_swap(&arr[i], &arr[j]);
     }
-    ft_swap(&arr[low],&arr[j]);
+    ft_swap(&arr[low], &arr[j]);
+    return (j);
 }
-void ft_quicksort(int arr[], int length)
+void ft_quicksort(int arr[], int low, int high)
 {
-    
+    int pivot;
+
+    if (low < high)
+    {
+        pivot = ft_partition(arr, low, high);
+        ft_quicksort(arr, low, pivot - 1);
+        ft_quicksort(arr, pivot + 1 , high);
+    }
 }
+

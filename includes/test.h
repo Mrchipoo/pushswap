@@ -33,6 +33,8 @@ void    ft_rra(walo **head_a);
 void    ft_rrb(walo **head_b);
 void    ft_rrr(walo **head_a, walo **head_b);
 void    ft_small_sort(walo **head);
+void    ft_quicksort(int arr[], int low, int high);
+void	ft_array(walo *head);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);
 walo	*ft_find_biggest(walo *head);

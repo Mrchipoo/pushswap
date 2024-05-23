@@ -52,3 +52,29 @@ walo *ft_find_min(walo *head)
 	}
 	return (node_min);
 }
+void	ft_array(walo *head)
+{
+	int	*arr;
+	int	i;
+	int count;
+	walo *current;
+
+	current = head;
+	count = 0;
+	i = 0;
+	while (current != NULL)
+	{
+		count++;
+		current = current->next;
+	}
+	arr = malloc(count * sizeof(int));
+	if (arr == NULL)
+		return ;
+	while (head != NULL)
+	{
+		arr[i] = head->data;
+		head = head->next;
+		i++;
+	}
+	ft_quicksort(arr, 0, count - 1);
+}
