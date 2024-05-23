@@ -11,14 +11,14 @@
 # **************************************************************************** #
 cc=cc
 Cflag=-Wall -Werror -Wextra
-Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c  test.c
+Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c utiliti/help.c sort/sort.c  test.c
 object = $(Src:.c=.o)
 NAME = push_swap
 
 all: $(NAME)
 
 $(NAME):$(object)
-	$(cc) $(Cflag) $(object) -Iincludes -o $(NAME)
+	$(cc) $(Cflag) $(object) -Iincludes  -g3  -o $(NAME)
 clean:
 	rm -f $(object)
 fclean:clean

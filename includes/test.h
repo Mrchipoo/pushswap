@@ -32,6 +32,8 @@ void	ft_swap_both(walo **head_a, walo **head_b);
 void    ft_rra(walo **head_a);
 void    ft_rrb(walo **head_b);
 void    ft_rrr(walo **head_a, walo **head_b);
+void    ft_small_sort(walo **head);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);
+walo    *ft_biggest_value(walo *head);
 #endif

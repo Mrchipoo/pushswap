@@ -12,12 +12,12 @@
 
 #include "includes/test.h"
 
-void	print_list(walo *node)
+void	print_list(walo *head)
 {
-	while (node != NULL)
+	while (head != NULL)
 	{
-		printf("%d -> ", node->data);
-		node = node->next;
+		printf("%d -> ", head->data);
+		head = head->next;
 	}
 	printf("NULL\n");
 }
@@ -75,5 +75,9 @@ int	main(int argc, char **argv)
 			ft_last_node(head_a)->next = new_node;
 		i++;
 	}
+	print_list(head_a);
+	ft_small_sort(&head_a);
+	print_list(head_a);
+
 	return (0);
 }
