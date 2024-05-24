@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/05/23 11:02:34 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/05/23 22:38:21 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/test.h"
@@ -52,7 +52,7 @@ walo *ft_find_min(walo *head)
 	}
 	return (node_min);
 }
-void	ft_array(walo *head)
+int	ft_array(walo *head)
 {
 	int	*arr;
 	int	i;
@@ -69,7 +69,7 @@ void	ft_array(walo *head)
 	}
 	arr = malloc(count * sizeof(int));
 	if (arr == NULL)
-		return ;
+		return 1;
 	while (head != NULL)
 	{
 		arr[i] = head->data;
@@ -77,4 +77,8 @@ void	ft_array(walo *head)
 		i++;
 	}
 	ft_quicksort(arr, 0, count - 1);
+	i = 0;
+	while (i < count / 2)
+		i++;
+	return (arr[i]);
 }

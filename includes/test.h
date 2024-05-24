@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                   +#+  +:+       +#+         */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 20:03:15 by echoubby                #+#    #+#       */
-/*   Updated: 2024/05/21 11:10:52 by echoubby         ###   ########.fr       */
+/*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
+/*   Updated: 2024/05/23 22:15:28 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void    ft_rrb(walo **head_b);
 void    ft_rrr(walo **head_a, walo **head_b);
 void    ft_small_sort(walo **head);
 void    ft_quicksort(int arr[], int low, int high);
-void	ft_array(walo *head);
+int     ft_array(walo *head);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);
 walo	*ft_find_biggest(walo *head);
