@@ -53,22 +53,22 @@ walo	*ft_last_before(walo *head)
 		new_node = new_node->next;
 	return (new_node);
 }
-void ft_push(walo **head_a, int mid, walo **head_b)
-{
-	walo	*current;
-//	walo	*temp;	
+// void ft_push(walo **head_a, int mid, walo **head_b)
+// {
+// 	walo	*current;
+// 	walo	*temp;	
 
-	current = *head_a;
-	while (current != NULL)
-	{
-		printf("%d  \n",current->data);
-		if (current->data < mid)
-			ft_push_2b(head_a, head_b);
-		else
-			ft_rotate_a(head_a);
-		current = *head_a;
-	}
-}
+// 	current = *head_a;
+// 	while (current != NULL)
+// 	{
+// 		temp = current->next;
+// 		if (current->data < mid)
+// 			ft_push_2b(head_a, head_b);
+// 		else
+// 			ft_rotate_a(head_a);
+// 		current = temp;
+// 	}
+// }
 
 int	main(int argc, char **argv)
 {
@@ -91,12 +91,12 @@ int	main(int argc, char **argv)
 			ft_last_node(head_a)->next = new_node;
 		i++;
 	}
-	print_list(head_a);
-	i = ft_array(head_a);
-	printf("%d\n",i);
-	ft_push(&head_a, i, &head_b);
-	print_list(head_a);
-	print_list(head_b);
+	//print_list(head_a);
+	i = ft_array(head_a,1);
+	if (i == -1)
+		return (1);
+	printf("LIS = %d\n",i);
+	//print_list(head_b);
 	// new_node = ft_find_min(head_a);
 	// printf("min = %d\n",new_node->data);
 	// print_list(head_a);
