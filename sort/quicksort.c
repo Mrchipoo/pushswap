@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 14:27:00 by echoubby          #+#    #+#             */
-/*   Updated: 2024/05/23 14:27:31 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:16:42 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/test.h"
 
 void    ft_swap(int *a, int *b)
@@ -30,7 +31,7 @@ int ft_partition(int arr[], int low, int high)
     j = high;
     while (i < j)
     {
-        while (arr[i] <= pivot)
+        while (i <= high && arr[i] <= pivot)
             i++;
         while (arr[j] > pivot)
             j--;

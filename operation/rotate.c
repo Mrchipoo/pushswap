@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:59:31 by echoubby          #+#    #+#             */
-/*   Updated: 2024/05/21 10:59:34 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:09:33 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/test.h"
 
-void ft_rotate_a(walo **head_a)
+void ft_ra(walo **head_a)
 {
     walo *temp;
 
@@ -24,7 +25,7 @@ void ft_rotate_a(walo **head_a)
     printf("ra\n");
 }
 
-void ft_rotate_b(walo **head_b)
+void ft_rb(walo **head_b)
 {
     walo *temp;
 

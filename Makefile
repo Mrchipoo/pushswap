@@ -3,13 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: echoubby <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mba <mba@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/21 14:21:06 by echoubby          #+#    #+#              #
-#    Updated: 2024/05/21 14:21:09 by echoubby         ###   ########.fr        #
+#    Updated: 2024/06/01 21:36:04 by mba              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-CC=cc
+
 CFLAGS=-Wall -Werror -Wextra -g3
 Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c utiliti/help.c sort/sort.c sort/quicksort.c test.c
 object = $(Src:.c=.o)

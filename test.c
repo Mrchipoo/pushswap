@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/05/23 22:33:08 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/01 21:33:49 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,16 @@ int	main(int argc, char **argv)
 			ft_last_node(head_a)->next = new_node;
 		i++;
 	}
-	//print_list(head_a);
-	i = ft_array(head_a,1);
-	if (i == -1)
-		return (1);
-	printf("LIS = %d\n",i);
-	//print_list(head_b);
+	print_list(head_a);
+	printf("before check\n");
+	ft_check(&head_a,&head_b);
+	print_list(head_a);
+	print_list(head_b);
+	printf("after check\n");
+	ft_last_loop(&head_a, &head_b);
+	print_list(head_a);
+	print_list(head_b);
+	printf("after sort \n");
 	// new_node = ft_find_min(head_a);
 	// printf("min = %d\n",new_node->data);
 	// print_list(head_a);

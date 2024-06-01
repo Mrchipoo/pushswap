@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:15:49 by echoubby          #+#    #+#             */
-/*   Updated: 2024/05/21 13:58:49 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/01 20:09:30 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../includes/test.h"
 
 void	ft_rra(walo **head_a)
