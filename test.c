@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/01 21:33:49 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/02 11:33:39 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	main(int argc, char **argv)
 	print_list(head_b);
 	printf("after check\n");
 	ft_last_loop(&head_a, &head_b);
+	//bring_min_to_top(&head_a);
 	print_list(head_a);
 	print_list(head_b);
 	printf("after sort \n");

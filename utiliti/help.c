@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/01 22:57:00 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/02 20:12:05 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ walo *ft_find_min(walo *head)
 	walo *node_min;
 
 	min = head->data;
+	node_min = head;
 	while (head != NULL)
 	{
 		if (min > head->data)
@@ -218,7 +219,21 @@ void	ft_check(walo **head_a, walo **head_b)
 	}
 }
 
-int ft_min(int i, int j)
+int ft_min_ra(int i, int j, int target, int current)
+{
+	if (i == j)
+		return (i);
+	else if (i > j)
+	{
+		if (current > target)
+			return ((j + 1) * -1);
+		return (-j);
+	}
+	if (current > target)
+		return ((i + 1));
+	return (i);
+}
+int ft_min_rb(int i, int j)
 {
 	if (i == j)
 		return (i);
@@ -242,15 +257,15 @@ int	ft_find_target_a(walo *head, walo *node)
 	walo	*temp2;
 	
 	i = 0;
-	min = (node->data - head->data);
+	min = ft_custom_abs(head->data - node->data);
 	len = ft_lenght(head, 1);
 	temp2 = head;
 	temp = head;
 	while (head != NULL)
 	{
-		if ((node->data - head->data) < min )
+		if (ft_custom_abs(head->data - node->data) < min )
 		{
-			min = (node->data - head->data);
+			min = ft_custom_abs(head->data - node->data);
 			temp = head;
 		}
 		head = head->next;
@@ -260,18 +275,13 @@ int	ft_find_target_a(walo *head, walo *node)
 		i++;
 		temp2 = temp2->next;
 	}
-	ra = ft_min(i, len - i);
+	ra = ft_min_ra(i, len - i, temp->data, node->data);
 	return (ra);
 }
 
 int	ft_calculate_total(int arr[1][3])
-{
-	int max;
-		
-	max = arr[0][0] + arr[0][1] + arr[0][2];
-	if (max >= 0)
-		return (max);
-	return (-max);
+{		
+	return (ft_custom_abs(arr[0][0]) + ft_custom_abs(arr[0][1]) + ft_custom_abs(arr[0][2]));
 }
 
 void ft_action(walo **head_a, walo **head_b,int arr[1][3])
@@ -337,11 +347,15 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	current2 = *head_b;
 	i = 0;
 	total = -1;
+	total_curr = -1;
 	len = ft_lenght(current2, 1);
+	arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
+	arr[0][1] = ft_min_rb(i, len - i);
+	arr[0][2] = 0;
 	while (current2 != NULL)
 	{
 		arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
-		arr[0][1] = ft_min(i, len - i);//rb/rrb
+		arr[0][1] = ft_min_rb(i, len - i);//rb/rrb
 		if (arr[0][0] >= 0 && arr[0][1] >= 0)
 		{
 			if (arr[0][0] >= arr[0][1])
@@ -372,9 +386,8 @@ void	ft_calculate(walo **head_a, walo **head_b)
 				arr[0][1] = 0;
 			}
 		}
-		printf("test %d\n",arr[0][0]);
 		total_curr = ft_calculate_total(arr);
-		if (total == -1 || ft_calculate_total(Temp) - total_curr > 0)//Temp is cheapest 
+		if (total == -1 ||  total_curr < total)//Temp is cheapest 
 		{
 			Temp[0][0] = arr[0][0]; // ra/rra
 			Temp[0][1] = arr[0][1]; // rb/rrb
@@ -386,17 +399,47 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	}
 	ft_action(head_a, head_b,Temp);
 }
+void ft_last_rotate(walo **head_a)
+{
+	walo *current;
+	int	i;
+	int	len;
+	int	ra;
+	walo *temp;
+
+	i = 0;
+	temp = *head_a;
+	len = ft_lenght(*head_a,1);
+	current = ft_find_min(*head_a);
+	while (temp != NULL &&  current->data != temp->data)
+	{
+		i++;
+		temp = temp->next;
+	}
+	ra = ft_min_rb(i, len - i);
+	while (ra != 0)
+	{
+		if (ra > 0)
+		{
+			ft_ra(head_a);
+			ra--;
+		}
+		if (ra < 0)
+		{
+			ft_rra(head_a);
+			ra++;
+		}
+	}
+}
 void	ft_last_loop(walo **head_a, walo **head_b)
 {
-	walo	*current;
 
-	current = *head_b;
-	while (current != NULL)
+	while (*head_b != NULL)
 	{
 		ft_calculate(head_a,head_b);
 		ft_push_2a(head_a,head_b);
-		current = current->next;
 	}
+	ft_last_rotate(head_a);
 }
 
 // /* 
