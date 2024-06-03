@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 10:10:19 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 12:31:20 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_list(walo *head, int mode)
 {
 	while (head != NULL)
 	{
-		printf("%d -> ", head->data);
+		printf("%d ", head->data);
 		head = head->next;
 	}
 	if (mode == 0)
