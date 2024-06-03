@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/02 20:12:05 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 10:54:07 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,15 +223,18 @@ int ft_min_ra(int i, int j, int target, int current)
 {
 	if (i == j)
 		return (i);
-	else if (i > j)
+	if (i > j)//rra
 	{
 		if (current > target)
-			return ((j + 1) * -1);
+			return (-(j + 1));
 		return (-j);
 	}
-	if (current > target)
-		return ((i + 1));
-	return (i);
+	else
+	{
+		if (current > target)//ra
+			return ((i + 1));
+		return (i);
+	}
 }
 int ft_min_rb(int i, int j)
 {
@@ -243,39 +246,54 @@ int ft_min_rb(int i, int j)
 }
 int ft_custom_abs(int x)
 {
-	if (x > 0)
-		return (x);
-	return (-x);
+	if (x < 0)
+		return (-x);
+	return (x);
 }
 int	ft_find_target_a(walo *head, walo *node)
 {
 	int i;
 	int len;
 	int ra;
-	int	min;
+	int	min_diff;
+	int	current_diff;
 	walo	*temp;
 	walo	*temp2;
 	
 	i = 0;
-	min = ft_custom_abs(head->data - node->data);
+	min_diff = ft_custom_abs(head->data - node->data);
 	len = ft_lenght(head, 1);
 	temp2 = head;
 	temp = head;
 	while (head != NULL)
 	{
-		if (ft_custom_abs(head->data - node->data) < min )
+		current_diff = ft_custom_abs(head->data - node->data);
+		if (current_diff < min_diff )
 		{
-			min = ft_custom_abs(head->data - node->data);
+			min_diff = current_diff;
 			temp = head;
 		}
 		head = head->next;
 	}
+	// printf ("b node  = %d\n",node->data);
+	// printf ("target node  = %d\n",temp->data);
+	// printf ("min = %d\n",min_diff);
 	while (temp2 != NULL && temp2->data != temp->data)
 	{
 		i++;
 		temp2 = temp2->next;
 	}
+	if (temp->next == NULL)
+	{
+		if (temp->data > node->data)
+			return (-1);
+		return (0);
+	}
+	// printf ("position of target node = %d\n",i);
+	// printf("len - i = %d\n ",len - 1);
 	ra = ft_min_ra(i, len - i, temp->data, node->data);
+	// printf ("close diff = %d\n",temp->data);
+	// printf ("ra = %d\n",ra);
 	return (ra);
 }
 
@@ -354,8 +372,10 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	arr[0][2] = 0;
 	while (current2 != NULL)
 	{
+		printf("head_b + 1\n");
 		arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
 		arr[0][1] = ft_min_rb(i, len - i);//rb/rrb
+		printf ("rb = %d\n",arr[0][1]);
 		if (arr[0][0] >= 0 && arr[0][1] >= 0)
 		{
 			if (arr[0][0] >= arr[0][1])
@@ -387,16 +407,24 @@ void	ft_calculate(walo **head_a, walo **head_b)
 			}
 		}
 		total_curr = ft_calculate_total(arr);
-		if (total == -1 ||  total_curr < total)//Temp is cheapest 
+		// printf ("rb after opt = %d\n",arr[0][1]);
+		// printf ("total = %d\n",total_curr);
+		if (total == -1 ||  total_curr <= total)//Temp is cheapest 
 		{
 			Temp[0][0] = arr[0][0]; // ra/rra
 			Temp[0][1] = arr[0][1]; // rb/rrb
 			Temp[0][2] = arr[0][2]; // rr/rrr
+			printf("action = %d\n",Temp[0][0]);
+			printf("action = %d\n",Temp[0][1]);
+			printf("action = %d\n",Temp[0][2]);
 			total = total_curr;
 		}
 		current2 = current2->next;
 		i++;
 	}
+	// printf("action after he find = %d\n",Temp[0][0]);
+	// printf("action  after he find  = %d\n",Temp[0][1]);
+	// printf("action   after he find  = %d\n",Temp[0][2]);
 	ft_action(head_a, head_b,Temp);
 }
 void ft_last_rotate(walo **head_a)
@@ -434,10 +462,13 @@ void ft_last_rotate(walo **head_a)
 void	ft_last_loop(walo **head_a, walo **head_b)
 {
 
+	//ft_calculate(head_a,head_b);
 	while (*head_b != NULL)
 	{
 		ft_calculate(head_a,head_b);
 		ft_push_2a(head_a,head_b);
+		print_list(*head_b,1);
+		print_list(*head_a, 0);
 	}
 	ft_last_rotate(head_a);
 }

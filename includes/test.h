@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/01 21:36:01 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 10:09:54 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct t_lis
 }   t_lis;
 
 void	ft_push_2a(walo **head_a,walo **head_b);
+void	print_list(walo *head, int mode);
 void	ft_push_2b(walo **head_a,walo **head_b);
 void	ft_ra(walo **head_a);
 void	ft_rb(walo **head_b);
