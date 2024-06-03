@@ -6,61 +6,34 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:59:24 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/01 20:09:40 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 19:36:08 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/test.h"
 
-void	ft_swap_a(walo **head_a)
-{
-	walo	*temp;
-	walo	*temp1;
 
-	if (*head_a == NULL ||(*head_a)->next == NULL)
-		return ;
-    temp = (*head_a);
-    temp1 = (*head_a)->next;
-    (temp->next) = temp1->next;//first node poiting on the next of second node
-    (*head_a) = temp1;//head poiting on second node
-    temp1->next = temp;//second node poiting on first node 
-    printf("sa\n");
-}
-
-void ft_swap_b(walo **head_b)
+void ft_swap(walo **head, int mode)
 {
     walo *temp;
     walo *temp1;
 
-    if (*head_b == NULL ||(*head_b)->next == NULL)
+    if (head == NULL || *head == NULL ||(*head)->next == NULL)
         return ;
-    temp = (*head_b);
-    temp1 = (*head_b)->next;
+    temp = (*head);
+    temp1 = (*head)->next;
     (temp->next) = temp1->next;
-    (*head_b) = temp1;
+    (*head) = temp1;
     temp1->next = temp;
-    printf("sb\n");
+    if (mode == 0)
+        write(2, "sa\n", 3);
+    else if (mode == 1)
+        write(2, "sb\n", 3);
 }
 
 void ft_swap_both(walo **head_a, walo **head_b)
 {
-    walo *temp;
-    walo *temp1;
-    if (*head_b == NULL ||(*head_b)->next == NULL
-        || *head_a == NULL ||(*head_a)->next == NULL)
-        return ;
-    else
-    {
-        temp = (*head_b);
-        temp1 = (*head_b)->next;
-        (temp->next) = temp1->next;
-        (*head_b) = temp1;
-        temp1->next = temp;
-        temp = (*head_a);
-        temp1 = (*head_a)->next;
-        (temp->next) = temp1->next;
-        (*head_a) = temp1;
-        temp1->next = temp;
-    }
-    printf("ss\n");
+   ft_swap(head_a, 2);
+   ft_swap(head_b, 2);
+    write(2, "ss\n", 3);
 }

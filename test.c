@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 12:31:20 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 19:29:55 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,89 +26,60 @@ void	print_list(walo *head, int mode)
 	else
 		printf("NULL stack b\n");
 }
-
-walo	*ft_last_node(walo *head)
+void	ft_free(walo **head)
 {
-	walo	*new_node;
-
-	new_node = head;
-	while (new_node->next != NULL)
-		new_node = new_node->next;
-	return (new_node);
+	walo	*current;
+	
+	if (head == NULL || *head == NULL)
+		return ;
+	while (*head)
+	{
+		current = (*head)->next;
+		free(*head);
+		*head = current;
+	}
+	*head = NULL;
 }
 
-walo	*ft_create_node(int data)
+void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode)
 {
-	walo	*new_node;
-
-	new_node = malloc(sizeof(walo));
-	if (!new_node)
-		return (0);
-	new_node->data = data;
-	new_node->next = NULL;
-	return (new_node);
+	ft_free(head_a);
+	ft_free(head_b);
+	if (mode == 0)
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+	exit(0);
 }
-
-walo	*ft_last_before(walo *head)
+int	ft_search(int	argc, char	**argv)
 {
-	walo *new_node;
-
-	new_node = head;
-	while ((new_node->next)->next != NULL)
-		new_node = new_node->next;
-	return (new_node);
+	if (1 == argc || (2 == argc && !argv[1][0]))
+		return (-1);
+	argv = ft_split(argv[1], 32);
+	return (1);
 }
-// void ft_push(walo **head_a, int mid, walo **head_b)
-// {
-// 	walo	*current;
-// 	walo	*temp;	
-
-// 	current = *head_a;
-// 	while (current != NULL)
-// 	{
-// 		temp = current->next;
-// 		if (current->data < mid)
-// 			ft_push_2b(head_a, head_b);
-// 		else
-// 			ft_rotate_a(head_a);
-// 		current = temp;
-// 	}
-// }
-
-int	main(int argc, char **argv)
+int	main(int	argc, char	**argv)
 {
-	int	i;
 	walo	*head_a;
 	walo	*head_b;
-	walo	*new_node;
 
-	i = 1;
 	head_b = NULL;
 	head_a = NULL;
 	if (argc < 2)
 		return (1);
-	while (i < argc)
-	{
-		new_node = ft_create_node(atoi(argv[i]));
-		if (head_a == NULL)
-			head_a = new_node;
-		else
-			ft_last_node(head_a)->next = new_node;
-		i++;
-	}
+	if (ft_search(argc, argv) == -1)
+		write(2, "Error\n", 6);
+	head_a = ft_fill(argc, argv);
+	if (ft_sorted(head_a))
+		ft_free_stack(&head_a, &head_b, 0);
+	if (ft_lenght(head_a, 1, NULL) == 2)
+		ft_swap(&head_a, 0);
+	if (ft_lenght(head_a, 1, NULL) == 3)
+		ft_small_sort(&head_a);
+	else
+		ft_last_loop(&head_a, &head_b);
 	print_list(head_a, 0);
-	printf("before check\n");
-	ft_check(&head_a,&head_b);
-	print_list(head_a, 0);
-	print_list(head_b,1);
-	printf("after check\n");
-	ft_last_loop(&head_a, &head_b);
-	//bring_min_to_top(&head_a);
-	print_list(head_a, 0);
-	print_list(head_b,1);
-	printf("after sort \n");
-	// new_node = ft_find_min(head_a);
-	// printf("min = %d\n",new_node->data);
-	// print_list(head_a, 0);
+	ft_free_stack(&head_a, &head_b, 1);
 	return (0);
 }

@@ -6,100 +6,18 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 12:33:57 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 19:44:40 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/test.h"
-
-int	ft_lenght(walo *head, int mode)
-{
-	int i;
-	walo	*current;
-
-	i = 0;
-	current = head;
-	if (mode == 1)
-	{
-		while (current != NULL)
-		{
-			current = current->next;
-			i++;
-		}
-	}
-	return (i);
-}
-
-int *ft_empty_array(walo *head)
-{
-	int	*arr;
-	int i;
-	int count;
-
-	i = 0;
-	count = ft_lenght(head,1);
-	arr = malloc(count * sizeof(int));
-	if (arr == NULL)
-		return NULL;
-	while (head != NULL)
-	{
-		arr[i] = head->data;
-		head = head->next;
-		i++;
-	}
-	return (arr);
-}
-
-walo	*ft_find_biggest(walo *head)
-{
-	walo	*current;
-	walo	*node;
-	int	max;
-
-	current = head->next;
-	node = head;
-	max = head->data;
-	while (current != NULL)
-	{
-		if (max > current->data)
-			current = current->next;
-		else
-		{
-			max = current->data;
-			node = current;
-			current = current->next;
-		}
-	}
-	return (node);
-}
-
-walo *ft_find_min(walo *head)
-{
-	int min;
-	walo *node_min;
-
-	min = head->data;
-	node_min = head;
-	while (head != NULL)
-	{
-		if (min > head->data)
-		{
-			min = head->data;
-			node_min = head;
-			head = head->next;
-		}
-		else
-			head = head->next;
-	}
-	return (node_min);
-}
 
 int median (walo *head)
 {
 	int *arr;
 	int count;
 	
-	count = ft_lenght(head,1);
+	count = ft_lenght(head, 1, NULL);
 	arr = ft_empty_array(head);
 	if (arr == NULL)
 		return (-1);
@@ -107,14 +25,13 @@ int median (walo *head)
 	return (arr[count / 2]);
 }
 
-
 t_lis *ft_array(walo *head)
 {
 	int	*arr;
 	int count;
 	t_lis *lis;
 
-	count = ft_lenght(head,1);
+	count = ft_lenght(head, 1, NULL);
 	arr = ft_empty_array(head);
 	lis = ft_LIS(arr,count);
 		// if (squence == NULL)
@@ -186,6 +103,8 @@ t_lis *ft_LIS(int arr[], int n)
 	lis = malloc(sizeof(t_lis));
 	lis->arr = squence;
 	lis->len= max;
+	free(LIS);
+	free(prev);
 	return (lis);
 }
 
@@ -198,7 +117,7 @@ void	ft_check(walo **head_a, walo **head_b)
 	int mid;
 	
 	mid = median(*head_a);
-	size_a = ft_lenght(*head_a, 1);
+	size_a = ft_lenght(*head_a, 1, NULL);
 	lis = ft_array(*head_a);
 	i = 0;
 	j = 0;
@@ -206,14 +125,14 @@ void	ft_check(walo **head_a, walo **head_b)
 	{
 		if (j != lis->len && (*head_a)->data == lis->arr[j])
 		{
-			ft_ra(head_a);
+			ft_rotate(head_a, 0);
 			j++;
 		}
 		else
 		{
 			ft_push_2b(head_a, head_b);
 			if (mid >= (*head_b)->data)
-				ft_rb(head_b);
+				ft_rotate(head_b, 1);
 			i++;
 		}
 	}
@@ -221,8 +140,6 @@ void	ft_check(walo **head_a, walo **head_b)
 
 int ft_min_ra(int i, int j, int target, int current)
 {
-	if (i == j)
-		return (i);
 	if (i > j)//rra
 	{
 		if (current > target)
@@ -262,7 +179,7 @@ int	ft_find_target_a(walo *head, walo *node)
 	
 	i = 0;
 	min_diff = ft_custom_abs(head->data - node->data);
-	len = ft_lenght(head, 1);
+	len = ft_lenght(head, 1, NULL);
 	temp2 = head;
 	target = head;
 	while (head != NULL)
@@ -290,7 +207,8 @@ int	ft_find_target_a(walo *head, walo *node)
 		return (0);
 	}
 	// printf ("position of target node = %d\n",i);
-	// printf("len - i = %d\n ",len - 1);
+	// printf("len - i = %d\n ",len - i);
+	// printf("len = %d\n ",len);
 	ra = ft_min_ra(i, len - i, target->data, node->data);
 	// printf ("close node = %d\n",target->data);
 	// printf ("ra = %d\n",ra);
@@ -315,12 +233,12 @@ void ft_action(walo **head_a, walo **head_b,int arr[1][3])
 	{
 		if (rb > 0)
 		{
-			ft_rb(head_b);
+			ft_rotate(head_b, 1);
 			rb--;
 		}
 		if (rb < 0)
 		{
-			ft_rrb(head_b);
+			ft_reverse(head_b, 1);
 			rb++;
 		}
 	}
@@ -328,12 +246,12 @@ void ft_action(walo **head_a, walo **head_b,int arr[1][3])
 	{
 		if (ra > 0)
 		{
-			ft_ra(head_a);
+			ft_rotate(head_a, 0);
 			ra--;
 		}
 		if (ra < 0)
 		{
-			ft_rra(head_a);
+			ft_reverse(head_a, 0);
 			ra++;
 		}
 	}
@@ -366,7 +284,7 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	i = 0;
 	total = -1;
 	total_curr = -1;
-	len = ft_lenght(current2, 1);
+	len = ft_lenght(*head_b, 1, NULL);
 	arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
 	arr[0][1] = ft_min_rb(i, len - i);
 	arr[0][2] = 0;
@@ -435,7 +353,7 @@ void ft_last_rotate(walo **head_a)
 
 	i = 0;
 	temp = *head_a;
-	len = ft_lenght(*head_a,1);
+	len = ft_lenght(*head_a, 1, NULL);
 	current = ft_find_min(*head_a);
 	while (temp != NULL &&  current->data != temp->data)
 	{
@@ -447,12 +365,12 @@ void ft_last_rotate(walo **head_a)
 	{
 		if (ra > 0)
 		{
-			ft_ra(head_a);
+			ft_rotate(head_a, 0);
 			ra--;
 		}
 		if (ra < 0)
 		{
-			ft_rra(head_a);
+			ft_reverse(head_a, 0);
 			ra++;
 		}
 	}
@@ -460,16 +378,11 @@ void ft_last_rotate(walo **head_a)
 void	ft_last_loop(walo **head_a, walo **head_b)
 {
 
-	//ft_calculate(head_a,head_b);
+	ft_check(head_a,head_b);
 	while (*head_b != NULL)
 	{
 		ft_calculate(head_a,head_b);
 		ft_push_2a(head_a,head_b);
-		print_list(*head_a, 0);
-		print_list(*head_b,1);
-		ft_last_rotate(head_a);
-		print_list(*head_a, 0);
-		print_list(*head_b,1);
 	}
 	ft_last_rotate(head_a);
 }
