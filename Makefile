@@ -6,12 +6,12 @@
 #    By: mba <mba@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/21 14:21:06 by echoubby          #+#    #+#              #
-#    Updated: 2024/06/03 19:23:27 by mba              ###   ########.fr        #
+#    Updated: 2024/06/03 23:44:58 by mba              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS=-Wall -Werror -Wextra -g3
-Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c utiliti/help.c sort/sort.c sort/quicksort.c split.c utiliti/libft.c node.c test.c
+Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c utiliti/help.c sort/sort.c sort/quicksort.c split.c utiliti/libft.c node.c LIS.c test.c
 object = $(Src:.c=.o)
 NAME = push_swap
 

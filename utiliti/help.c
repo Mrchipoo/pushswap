@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 19:44:40 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/04 00:03:05 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,89 +23,6 @@ int median (walo *head)
 		return (-1);
 	ft_quicksort(arr, 0, count - 1);
 	return (arr[count / 2]);
-}
-
-t_lis *ft_array(walo *head)
-{
-	int	*arr;
-	int count;
-	t_lis *lis;
-
-	count = ft_lenght(head, 1, NULL);
-	arr = ft_empty_array(head);
-	lis = ft_LIS(arr,count);
-		// if (squence == NULL)
-		// 	return (NULL);
-	return (lis);
-}
-
-t_lis *ft_LIS(int arr[], int n)
-{
-	int	i;
-	int	j;
-	int	*LIS;
-	int	index;
-	int	*prev;
-	int	pos;
-	int	*squence;
-	int	max;
-	t_lis *lis;
-	
-	max = 0;
-	i = 0;
-	index = 0;
-	lis = NULL;
-	LIS = malloc(sizeof(int) * n);
-	prev = malloc(sizeof(int) * n);
-	if (LIS == NULL || prev == NULL)
-		return NULL;
-	while (i < n)
-	{
-		LIS[i] = 1;
-		prev[i] = -1;
-		i++;
-	}
-	i = 1;
-	while(i < n)
-	{
-		j = 0;
-		while (j < i)
-		{
-			if (arr[j] < arr[i] && LIS[j] + 1 > LIS[i])
-			{
-				LIS[i] = LIS[j] + 1;
-				prev[i] = j;
-			}
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	while (i < n)
-	{
-		if (max < LIS[i])
-		{
-			max = LIS[i];
-			index = i;
-		}
-		i++;
-	}
-	squence = malloc(sizeof(int) * max);
-	if (squence == NULL)
-		return NULL;
-	pos = max - 1;
-	while (index != -1)
-	{
-		squence[pos] = arr[index];
-		pos--;
-		index  = prev[index];
-	}
-	lis = malloc(sizeof(t_lis));
-	lis->arr = squence;
-	lis->len= max;
-	free(LIS);
-	free(prev);
-	return (lis);
 }
 
 void	ft_check(walo **head_a, walo **head_b)
@@ -167,51 +84,50 @@ int ft_custom_abs(int x)
 		return (-x);
 	return (x);
 }
+walo	*ft_diff(walo	*head, walo	*node)
+{
+	int	min;
+	int	current;
+	walo	*target;
+	
+	target = head;
+	min = ft_custom_abs(head->data - node->data);
+	while (head != NULL)
+	{
+		current = ft_custom_abs(head->data - node->data);
+		if (current <= min)
+		{
+			min = current;
+			target = head;
+		}
+		head = head->next;
+	}
+	return (target);
+}
 int	ft_find_target_a(walo *head, walo *node)
 {
 	int i;
 	int len;
 	int ra;
-	int	min_diff;
-	int	current_diff;
 	walo	*target;
 	walo	*temp2;
 	
 	i = 0;
-	min_diff = ft_custom_abs(head->data - node->data);
 	len = ft_lenght(head, 1, NULL);
 	temp2 = head;
-	target = head;
-	while (head != NULL)
-	{
-		current_diff = ft_custom_abs(head->data - node->data);
-		if (current_diff < min_diff )
-		{
-			min_diff = current_diff;
-			target = head;
-		}
-		head = head->next;
-	}
+	target = ft_diff(head, node);
 	while (temp2 != NULL && temp2->data != target->data)
 	{
 		i++;
 		temp2 = temp2->next;
 	}
-	// printf ("b node  = %d\n",node->data);
-	// printf ("target node  = %d\n",target->data);
-	// printf ("min = %d\n",min_diff);
 	if (target->next == NULL)
 	{
 		if (target->data > node->data)
 			return (-1);
 		return (0);
 	}
-	// printf ("position of target node = %d\n",i);
-	// printf("len - i = %d\n ",len - i);
-	// printf("len = %d\n ",len);
 	ra = ft_min_ra(i, len - i, target->data, node->data);
-	// printf ("close node = %d\n",target->data);
-	// printf ("ra = %d\n",ra);
 	return (ra);
 }
 
@@ -229,32 +145,8 @@ void ft_action(walo **head_a, walo **head_b,int arr[1][3])
 	ra = arr[0][0];
 	rb = arr[0][1];
 	rall = arr[0][2];
-	while (rb != 0)
-	{
-		if (rb > 0)
-		{
-			ft_rotate(head_b, 1);
-			rb--;
-		}
-		if (rb < 0)
-		{
-			ft_reverse(head_b, 1);
-			rb++;
-		}
-	}
-	while (ra != 0)
-	{
-		if (ra > 0)
-		{
-			ft_rotate(head_a, 0);
-			ra--;
-		}
-		if (ra < 0)
-		{
-			ft_reverse(head_a, 0);
-			ra++;
-		}
-	}
+	ft_do_it(head_a, ra, 0);
+	ft_do_it(head_a, rb, 1);
 	while (rall != 0)
 	{
 		if (rall > 0)
@@ -292,8 +184,6 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	{
 		arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
 		arr[0][1] = ft_min_rb(i, len - i);//rb/rrb
-		// printf ("rb = %d\n",arr[0][1]);
-		// printf ("rrr/rr = %d\n",arr[0][2]);
 		if (arr[0][0] >= 0 && arr[0][1] >= 0)
 		{
 			if (arr[0][0] >= arr[0][1])
@@ -326,7 +216,6 @@ void	ft_calculate(walo **head_a, walo **head_b)
 		}
 		else//if one of ra or rb have diffrent sign because i dont enter if above so i change value for rrr/rr
 			arr[0][2] = 0;
-		// printf ("rrr/rr = %d\n",arr[0][2]);
 		total_curr = ft_calculate_total(arr);
 		if (total == -1 ||  total_curr <= total)//Temp is cheapest 
 		{
@@ -338,10 +227,29 @@ void	ft_calculate(walo **head_a, walo **head_b)
 		current2 = current2->next;
 		i++;
 	}
-	// printf("action after he find = %d\n",Temp[0][0]);
-	// printf("action  after he find  = %d\n",Temp[0][1]);
-	// printf("action   after he find  = %d\n",Temp[0][2]);
 	ft_action(head_a, head_b,Temp);
+}
+void	ft_do_it(walo	**head, int	rotate,int	mode)
+{
+	while (rotate != 0)
+	{
+		if (rotate > 0)
+		{
+			if (mode == 0)
+				ft_rotate(head, mode);
+			else if (mode == 1)
+				ft_rotate(head, mode);
+			rotate--;
+		}
+		if (rotate < 0)
+		{
+			if (mode == 0)
+				ft_reverse(head, mode);
+			else if (mode == 1)
+				ft_reverse(head, mode);
+			rotate++;
+		}
+	}
 }
 void ft_last_rotate(walo **head_a)
 {
@@ -361,19 +269,7 @@ void ft_last_rotate(walo **head_a)
 		temp = temp->next;
 	}
 	ra = ft_min_rb(i, len - i);
-	while (ra != 0)
-	{
-		if (ra > 0)
-		{
-			ft_rotate(head_a, 0);
-			ra--;
-		}
-		if (ra < 0)
-		{
-			ft_reverse(head_a, 0);
-			ra++;
-		}
-	}
+	ft_do_it(head_a, ra, 0);
 }
 void	ft_last_loop(walo **head_a, walo **head_b)
 {

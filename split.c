@@ -59,7 +59,7 @@ int	ft_write(char **str, char const *s, char c)
 	return (0);
 }
 
-int	count(char const *s, char sep)
+int	count(char	*s, char sep)
 {
 	size_t	i;
 	int		count;
@@ -78,22 +78,16 @@ int	count(char const *s, char sep)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char	*s, char c)
 {
 	char	**str;
 	int		len;
 
-	if (!s)
-	{
-		str = malloc(1 * sizeof(char *));
-		if (!str)
-			return (NULL);
-		str[0] = NULL;
-		return (str);
-	}
 	len = count(s, c);
+	if (!len)
+		exit(1);
 	str = malloc((len + 1) * sizeof(char *));
-	if (!str)
+	if (str == NULL)
 		return (NULL);
 	str[len] = NULL;
 	if (ft_write(str, s, c))

@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 19:44:02 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 23:23:17 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void    ft_quicksort(int arr[], int low, int high);
 void	ft_check(walo **head_a, walo **head_b);
 void	ft_last_loop(walo **head_a, walo **head_b);
 void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode);
-char	**ft_split(char const *s, char c);
+void	ft_do_it(walo	**head, int	rotate,int	mode);
+char	**ft_split(char *s, char c);
 int     ft_search(int	argc, char	**argv);
 int     ft_atoi(char *nptr);
 int     ft_lenght(walo *head, int mode, char	*str);
@@ -50,7 +51,7 @@ int     *ft_empty_array(walo *head);
 int     ft_sorted(walo	*head);
 walo	*ft_fill(int	argc, char	**argv);
 t_lis   *ft_array(walo *head);
-t_lis   *ft_LIS(int arr[], int n);
+t_lis *ft_main_LIS(int arr[], int n);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);
 walo	*ft_find_biggest(walo *head);
