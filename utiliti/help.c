@@ -6,24 +6,11 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/04 00:03:05 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/04 20:30:47 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/test.h"
-
-int median (walo *head)
-{
-	int *arr;
-	int count;
-	
-	count = ft_lenght(head, 1, NULL);
-	arr = ft_empty_array(head);
-	if (arr == NULL)
-		return (-1);
-	ft_quicksort(arr, 0, count - 1);
-	return (arr[count / 2]);
-}
 
 void	ft_check(walo **head_a, walo **head_b)
 {
@@ -55,127 +42,19 @@ void	ft_check(walo **head_a, walo **head_b)
 	}
 }
 
-int ft_min_ra(int i, int j, int target, int current)
-{
-	if (i > j)//rra
-	{
-		if (current > target)
-			return (-(j - 1));
-		return (-j);
-	}
-	else
-	{
-		if (current > target)//ra
-			return ((i + 1));
-		return (i);
-	}
-}
-int ft_min_rb(int i, int j)
-{
-	if (i == j)
-		return (i);
-	else if (i > j)
-		return (-j);
-	return (i);
-}
-int ft_custom_abs(int x)
-{
-	if (x < 0)
-		return (-x);
-	return (x);
-}
-walo	*ft_diff(walo	*head, walo	*node)
-{
-	int	min;
-	int	current;
-	walo	*target;
-	
-	target = head;
-	min = ft_custom_abs(head->data - node->data);
-	while (head != NULL)
-	{
-		current = ft_custom_abs(head->data - node->data);
-		if (current <= min)
-		{
-			min = current;
-			target = head;
-		}
-		head = head->next;
-	}
-	return (target);
-}
-int	ft_find_target_a(walo *head, walo *node)
-{
-	int i;
-	int len;
-	int ra;
-	walo	*target;
-	walo	*temp2;
-	
-	i = 0;
-	len = ft_lenght(head, 1, NULL);
-	temp2 = head;
-	target = ft_diff(head, node);
-	while (temp2 != NULL && temp2->data != target->data)
-	{
-		i++;
-		temp2 = temp2->next;
-	}
-	if (target->next == NULL)
-	{
-		if (target->data > node->data)
-			return (-1);
-		return (0);
-	}
-	ra = ft_min_ra(i, len - i, target->data, node->data);
-	return (ra);
-}
-
-int	ft_calculate_total(int arr[1][3])
-{		
-	return (ft_custom_abs(arr[0][0]) + ft_custom_abs(arr[0][1]) + ft_custom_abs(arr[0][2]));
-}
-
-void ft_action(walo **head_a, walo **head_b,int arr[1][3])
-{
-	int ra;
-	int	rb;
-	int rall;
-
-	ra = arr[0][0];
-	rb = arr[0][1];
-	rall = arr[0][2];
-	ft_do_it(head_a, ra, 0);
-	ft_do_it(head_a, rb, 1);
-	while (rall != 0)
-	{
-		if (rall > 0)
-		{
-			ft_rr(head_a, head_b);
-			rall--;
-		}
-		if (rall < 0)
-		{
-			ft_rrr(head_a, head_b);
-			rall++;
-		}
-	}
-}
-
 void	ft_calculate(walo **head_a, walo **head_b)
 {
 	walo	*current2;
 	int	arr[1][3];
+	int	Temp[1][3];
 	int i;
 	int len;
 	int total;
 	int total_curr;
-	int	Temp[1][3];
 	
 	current2 = *head_b;
 	i = 0;
 	total = -1;
-	total_curr = -1;
 	len = ft_lenght(*head_b, 1, NULL);
 	arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
 	arr[0][1] = ft_min_rb(i, len - i);
@@ -229,28 +108,7 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	}
 	ft_action(head_a, head_b,Temp);
 }
-void	ft_do_it(walo	**head, int	rotate,int	mode)
-{
-	while (rotate != 0)
-	{
-		if (rotate > 0)
-		{
-			if (mode == 0)
-				ft_rotate(head, mode);
-			else if (mode == 1)
-				ft_rotate(head, mode);
-			rotate--;
-		}
-		if (rotate < 0)
-		{
-			if (mode == 0)
-				ft_reverse(head, mode);
-			else if (mode == 1)
-				ft_reverse(head, mode);
-			rotate++;
-		}
-	}
-}
+
 void ft_last_rotate(walo **head_a)
 {
 	walo *current;

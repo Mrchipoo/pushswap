@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 22:40:26 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/03 19:29:55 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode)
 }
 int	ft_search(int	argc, char	**argv)
 {
-	
 	if (1 == argc || (2 == argc && !argv[1][0]))
 		return (-1);
 	argv = ft_split(argv[1], 32);

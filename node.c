@@ -10,6 +10,7 @@ walo	*ft_last_node(walo *head)
 		new_node = new_node->next;
 	return (new_node);
 }
+
 walo	*ft_create_node(int data)
 {
 	walo	*new_node;
@@ -21,6 +22,7 @@ walo	*ft_create_node(int data)
 	new_node->next = NULL;
 	return (new_node);
 }
+
 walo	*ft_last_before(walo *head)
 {
 	walo *new_node;
@@ -30,6 +32,7 @@ walo	*ft_last_before(walo *head)
 		new_node = new_node->next;
 	return (new_node);
 }
+
 int	ft_sorted(walo	*head)
 {
 	walo	*tmp;
