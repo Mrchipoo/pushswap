@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/04 20:30:47 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 10:30:38 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	{
 		arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
 		arr[0][1] = ft_min_rb(i, len - i);//rb/rrb
+		// printf ("rb = %d\n",arr[0][1]);
+		// printf ("rrr/rr = %d\n",arr[0][2]);
 		if (arr[0][0] >= 0 && arr[0][1] >= 0)
 		{
 			if (arr[0][0] >= arr[0][1])
@@ -106,6 +108,9 @@ void	ft_calculate(walo **head_a, walo **head_b)
 		current2 = current2->next;
 		i++;
 	}
+	// printf("action after he find = %d\n",Temp[0][0]);
+	// printf("action  after he find  = %d\n",Temp[0][1]);
+	// printf("action   after he find  = %d\n",Temp[0][2]);
 	ft_action(head_a, head_b,Temp);
 }
 
@@ -129,25 +134,19 @@ void ft_last_rotate(walo **head_a)
 	ra = ft_min_rb(i, len - i);
 	ft_do_it(head_a, ra, 0);
 }
+
 void	ft_last_loop(walo **head_a, walo **head_b)
 {
 
 	ft_check(head_a,head_b);
+	//print_list(*head_a, 0);
+	//print_list(*head_b, 1);
 	while (*head_b != NULL)
 	{
 		ft_calculate(head_a,head_b);
 		ft_push_2a(head_a,head_b);
+		//print_list(*head_b, 1);
+		//print_list(*head_a, 0);
 	}
 	ft_last_rotate(head_a);
 }
-
-// /* 
-//  -- For each node in b -- 
-// 1- from current position b : return moves in b rb or rrb
-// 2- Calculate target:
-// 	2.a- diff between the node (in b) and each element in a: return the element in a with the smallest diff
-// 	2.b- calculate target position in a: if the a element returned is small the target pos: pos_a + 1 else pos: pos_a
-// 3- from target position calculate the number of moves in a : ra or rra
-// 4- optimize : return the rr and rrr moves
-// 5- calcute total cost :total = vabs(ra/rra) +  vabs(rb/rrb) + vabs(rr/rrr)
-// */

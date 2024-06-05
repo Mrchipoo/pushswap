@@ -6,8 +6,12 @@ walo	*ft_diff(walo	*head, walo	*node)
 	int	min;
 	int	current;
 	walo	*target;
+	walo	*check;
 	
 	target = head;
+	check = ft_find_min(head);
+	if (node->data == -2147483648)
+		return (check);
 	min = ft_custom_abs(head->data - node->data);
 	while (head != NULL)
 	{
@@ -59,7 +63,10 @@ int	ft_find_target_a(walo *head, walo *node)
 			return (-1);
 		return (0);
 	}
+	//printf ("b node  = %d\n",node->data);
+	//printf ("target node  = %d\n",target->data);
 	ra = ft_min_ra(i, len - i, target->data, node->data);
+	//printf ("ra = %d\n",ra);
 	return (ra);
 }
 

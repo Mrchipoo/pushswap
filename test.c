@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 19:29:55 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 10:39:52 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int	argc, char	**argv)
 	if (ft_search(argc, argv) == -1)
 		write(2, "Error\n", 6);
 	head_a = ft_fill(argc, argv);
+	//print_list(head_a, 0);
 	if (ft_sorted(head_a))
 		ft_free_stack(&head_a, &head_b, 0);
 	if (ft_lenght(head_a, 1, NULL) == 2)
@@ -79,7 +80,7 @@ int	main(int	argc, char	**argv)
 		ft_small_sort(&head_a);
 	else
 		ft_last_loop(&head_a, &head_b);
-	print_list(head_a, 0);
+	//print_list(head_a, 0);
 	ft_free_stack(&head_a, &head_b, 1);
 	return (0);
 }
