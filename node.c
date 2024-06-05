@@ -67,5 +67,6 @@ walo	*ft_fill(int	argc, char	**argv)
 			ft_last_node(current)->next = new_node;
 		i++;
 	}
+	ft_check_duplicate(first);
 	return (first);
 }

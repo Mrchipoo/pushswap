@@ -26,7 +26,7 @@ int ft_min_rb(int i, int j)
 	return (i);
 }
 
-int ft_custom_abs(int x)
+long	ft_custom_abs(long	x)
 {
 	if (x < 0)
 		return (-x);

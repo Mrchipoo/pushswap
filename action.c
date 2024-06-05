@@ -3,8 +3,8 @@
 
 walo	*ft_diff(walo	*head, walo	*node)
 {
-	int	min;
-	int	current;
+	long	min;
+	long	current;
 	walo	*target;
 	walo	*check;
 	
@@ -12,10 +12,10 @@ walo	*ft_diff(walo	*head, walo	*node)
 	check = ft_find_min(head);
 	if (node->data == -2147483648)
 		return (check);
-	min = ft_custom_abs(head->data - node->data);
+	min = ft_custom_abs((long)head->data - (long)node->data);
 	while (head != NULL)
 	{
-		current = ft_custom_abs(head->data - node->data);
+		current = ft_custom_abs((long)head->data - (long)node->data);
 		if (current <= min)
 		{
 			min = current;

@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 10:30:38 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 13:19:57 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,13 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	i = 0;
 	total = -1;
 	len = ft_lenght(*head_b, 1, NULL);
-	arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
+	arr[0][0] = ft_find_target_a((*head_a),current2);
 	arr[0][1] = ft_min_rb(i, len - i);
 	arr[0][2] = 0;
 	while (current2 != NULL)
 	{
-		arr[0][0] = ft_find_target_a((*head_a),current2);//ra/rra
-		arr[0][1] = ft_min_rb(i, len - i);//rb/rrb
-		// printf ("rb = %d\n",arr[0][1]);
-		// printf ("rrr/rr = %d\n",arr[0][2]);
+		arr[0][0] = ft_find_target_a((*head_a),current2);
+		arr[0][1] = ft_min_rb(i, len - i);
 		if (arr[0][0] >= 0 && arr[0][1] >= 0)
 		{
 			if (arr[0][0] >= arr[0][1])
@@ -73,10 +71,10 @@ void	ft_calculate(walo **head_a, walo **head_b)
 				arr[0][0] = arr[0][0] - arr[0][1];
 				arr[0][1] = 0;
 			}
-			else if (arr[0][0] <=  arr[0][1])
+			else if (arr[0][0] <  arr[0][1])
 			{
 				arr[0][2] = arr[0][0];
-				arr[0][0] = arr[0][1] - arr[0][0];
+				arr[0][1] = arr[0][1] - arr[0][0];
 				arr[0][0] = 0;
 			}
 		}
@@ -108,9 +106,6 @@ void	ft_calculate(walo **head_a, walo **head_b)
 		current2 = current2->next;
 		i++;
 	}
-	// printf("action after he find = %d\n",Temp[0][0]);
-	// printf("action  after he find  = %d\n",Temp[0][1]);
-	// printf("action   after he find  = %d\n",Temp[0][2]);
 	ft_action(head_a, head_b,Temp);
 }
 
@@ -139,14 +134,10 @@ void	ft_last_loop(walo **head_a, walo **head_b)
 {
 
 	ft_check(head_a,head_b);
-	//print_list(*head_a, 0);
-	//print_list(*head_b, 1);
 	while (*head_b != NULL)
 	{
 		ft_calculate(head_a,head_b);
 		ft_push_2a(head_a,head_b);
-		//print_list(*head_b, 1);
-		//print_list(*head_a, 0);
 	}
 	ft_last_rotate(head_a);
 }

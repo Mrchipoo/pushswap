@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/04 19:41:21 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 13:50:30 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void    ft_quicksort(int arr[], int low, int high);
 void	ft_check(walo **head_a, walo **head_b);
 void	ft_last_loop(walo **head_a, walo **head_b);
 void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode);
+void	ft_check_duplicate(walo	*head);
 char	**ft_split(char const *s, char c);
 int     ft_search(int	argc, char	**argv);
 int     ft_atoi(char *nptr);
@@ -52,7 +53,7 @@ int     *ft_empty_array(walo *head);
 int     ft_sorted(walo	*head);
 int     ft_min_ra(int i, int j, int target, int current);
 int     ft_min_rb(int i, int j);
-int     ft_custom_abs(int x);
+long     ft_custom_abs(long x);
 int     ft_calculate_total(int arr[1][3]);
 int     median (walo *head);
 int     ft_find_target_a(walo *head, walo *node);
