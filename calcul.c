@@ -42,11 +42,14 @@ int median (walo *head)
 {
 	int *arr;
 	int count;
+	int result;
 	
 	count = ft_lenght(head, 1, NULL);
 	arr = ft_empty_array(head);
 	if (arr == NULL)
 		return (-1);
 	ft_quicksort(arr, 0, count - 1);
-	return (arr[count / 2]);
+	result = arr[count / 2];
+	free(arr);
+	return (result);
 }

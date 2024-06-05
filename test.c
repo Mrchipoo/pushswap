@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 13:54:25 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 16:42:41 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,14 @@ void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode)
 	}
 	exit(0);
 }
-
 int	ft_search(int	argc, char	**argv)
 {
 	if (1 == argc || (2 == argc && !argv[1][0]))
 		return (-1);
 	argv = ft_split(argv[1], 32);
-	return (1);
+	return (0);
 }
-
+	
 int	main(int	argc, char	**argv)
 {
 	walo	*head_a;
@@ -78,7 +77,7 @@ int	main(int	argc, char	**argv)
 	head_b = NULL;
 	head_a = NULL;
 	if (argc < 2)
-		return (1);
+		return (0);
 	if (ft_search(argc, argv) == -1)
 		write(2, "Error\n", 6);
 	head_a = ft_fill(argc, argv);

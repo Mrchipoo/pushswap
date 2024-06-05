@@ -35,6 +35,7 @@ t_lis *ft_array(walo *head)
 	count = ft_lenght(head, 1, NULL);
 	arr = ft_empty_array(head);
 	lis = ft_main_LIS(arr,count);
+	free(arr);
 	if (lis == NULL)
 		return (NULL);
 	return (lis);

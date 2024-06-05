@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 13:19:57 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 16:47:21 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	ft_check(walo **head_a, walo **head_b)
 			i++;
 		}
 	}
+	free(lis->arr);
+	free(lis);
 }
 
 void	ft_calculate(walo **head_a, walo **head_b)
