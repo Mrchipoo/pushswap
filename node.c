@@ -46,18 +46,18 @@ int	ft_sorted(walo	*head)
 	}
 	return (1);
 }
-walo	*ft_fill(int	argc, char	**argv)
+walo	*ft_fill(char	**str)
 {
 	int	i;
 	walo	*new_node;
 	walo	*current;
 	walo	*first;
 	
-	i = 1;
+	i = 0;
 	current = NULL;
-	while (i < argc)
+	while (str[i])
 	{
-		new_node = ft_create_node(ft_atoi(argv[i]));
+		new_node = ft_create_node(ft_atoi(str[i]));
 		if (current == NULL)
 		{
 			current = new_node;
@@ -65,9 +65,11 @@ walo	*ft_fill(int	argc, char	**argv)
 		}
 		else
 			ft_last_node(current)->next = new_node;
+		free(str[i]);
 		i++;
 	}
-	if (!first)
+	free(str);
+	if (first)
 		ft_check_duplicate(first);
 	return (first);
 }

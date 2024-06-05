@@ -54,3 +54,47 @@ int	ft_lenght(walo *head, int mode, char	*str)
 	return (i);
 }
 
+char	*ft_strjoin(char	*s1, char	*s2)
+{
+	int		i;
+	int		tol;
+	int		j;
+	char	*b;
+
+	i = 0;
+	j = 0;
+	if (!s2)
+		return (NULL);
+	tol = ft_lenght(NULL, 2, s1) + ft_lenght(NULL, 2, s2) + 1;
+	b = malloc((tol + 1) * sizeof(char));
+	if (b == NULL)
+		return (0);
+	while (s1[i] && i < tol)
+	{
+		b[i] = s1[i];
+		i++;
+	}
+	b[i++] = ' ';
+	while (s2[j] && i < tol)
+		b[i++] = s2[j++];
+	b[i] = '\0';
+	return (b);
+}
+
+char	*ft_strdup(char	*s)
+{
+	char	*pt;
+	int		i;
+
+	i = 0;
+	pt = malloc(sizeof(char) * (ft_lenght(NULL, 2, s) + 1));
+	if (pt == NULL)
+		return (NULL);
+	while (s[i])
+	{
+		pt[i] = s[i];
+		i++;
+	}
+	pt[i] = '\0';
+	return (pt);
+}

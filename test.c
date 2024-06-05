@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 16:42:41 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 22:38:21 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,38 +35,43 @@ void	ft_check_duplicate(walo	*head)
 	}
 }
 
-void	ft_free(walo **head)
+walo	*ft_anti_error(int argc, char **argv)
 {
 	walo	*current;
-	
-	if (head == NULL || *head == NULL)
-		return ;
-	while (*head)
-	{
-		current = (*head)->next;
-		free(*head);
-		*head = current;
-	}
-	*head = NULL;
-}
 
-void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode)
-{
-	ft_free(head_a);
-	ft_free(head_b);
-	if (mode == 0)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	exit(0);
-}
-int	ft_search(int	argc, char	**argv)
-{
+	current = NULL;
 	if (1 == argc || (2 == argc && !argv[1][0]))
-		return (-1);
-	argv = ft_split(argv[1], 32);
-	return (0);
+		return (NULL);
+	current = ft_search(argc,argv);
+	return (current);
+}
+walo	*ft_search(int	argc, char	**argv)
+{
+	char	*s1;
+	int		i;
+	char	**str;
+	walo	*current;
+	char	*temp;
+	
+	i = 1;
+	s1 = ft_strdup("");
+	if (!s1)
+		return(NULL);
+	while (i < argc)
+	{
+		temp = ft_strjoin(s1,argv[i]);
+		if (!temp)
+			return (NULL);
+		free(s1);
+		s1 = temp;
+		i++;
+	}
+	str = ft_split(s1, 32);
+	free(s1);
+	if (!str)
+		return (NULL);
+	current = ft_fill(str);
+	return (current);
 }
 	
 int	main(int	argc, char	**argv)
@@ -78,9 +83,9 @@ int	main(int	argc, char	**argv)
 	head_a = NULL;
 	if (argc < 2)
 		return (0);
-	if (ft_search(argc, argv) == -1)
-		write(2, "Error\n", 6);
-	head_a = ft_fill(argc, argv);
+	head_a = ft_anti_error(argc, argv);
+	if (head_a == NULL)
+		ft_free_stack(&head_a, NULL, 1);
 	if (ft_sorted(head_a))
 		ft_free_stack(&head_a, &head_b, 0);
 	if (ft_lenght(head_a, 1, NULL) == 2)

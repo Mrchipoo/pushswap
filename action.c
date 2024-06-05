@@ -64,10 +64,7 @@ int	ft_find_target_a(walo *head, walo *node)
 			return (-1);
 		return (0);
 	}
-	//printf ("b node  = %d\n",node->data);
-	//printf ("target node  = %d\n",target->data);
 	ra = ft_min_ra(i, len - i, target->data, node->data);
-	//printf ("ra = %d\n",ra);
 	return (ra);
 }
 
@@ -94,15 +91,15 @@ void	ft_do_it(walo	**head, int	rotate,int	mode)
 	}
 }
 
-void ft_action(walo **head_a, walo **head_b,int arr[1][3])
+void	ft_action(walo **head_a, walo **head_b,int arr[3])
 {
 	int ra;
 	int	rb;
 	int rall;
 
-	ra = arr[0][0];
-	rb = arr[0][1];
-	rall = arr[0][2];
+	ra = arr[0];
+	rb = arr[1];
+	rall = arr[2];
 	ft_do_it(head_a, ra, 0);
 	ft_do_it(head_b, rb, 1);
 	while (rall != 0)

@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 16:41:18 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 23:09:10 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct t_lis
 
 void	print_list(walo *head, int mode);
 void	ft_push_2a(walo **head_a,walo **head_b);
-void    ft_action(walo **head_a, walo **head_b,int arr[1][3]);
+void	ft_action(walo **head_a, walo **head_b,int [3]);
 void	ft_do_it(walo	**head, int	rotate,int	mode);
 void	ft_push_2b(walo **head_a,walo **head_b);
 void	ft_rotate(walo **head, int mode);
@@ -44,8 +44,11 @@ void    ft_quicksort(int arr[], int low, int high);
 void	ft_check(walo **head_a, walo **head_b);
 void	ft_last_loop(walo **head_a, walo **head_b);
 void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode);
+void	ft_free(walo **head);
 void	ft_check_duplicate(walo	*head);
 char	**ft_split(char const *s, char c);
+char	*ft_strjoin(char	*s1, char	*s2);
+char	*ft_strdup(char	*s);
 int     ft_atoi(char *nptr);
 int     ft_lenght(walo *head, int mode, char	*str);
 int     *ft_empty_array(walo *head);
@@ -53,11 +56,11 @@ int     ft_sorted(walo	*head);
 int     ft_min_ra(int i, int j, int target, int current);
 int     ft_min_rb(int i, int j);
 long     ft_custom_abs(long x);
-int     ft_search(int	argc, char	**argv);
-int     ft_calculate_total(int arr[1][3]);
+walo	*ft_search(int	argc, char	**argv);
+int     ft_calculate_total(int arr[3]);
 int     median (walo *head);
 int     ft_find_target_a(walo *head, walo *node);
-walo	*ft_fill(int	argc, char	**argv);
+walo	*ft_fill(char	**str);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);
 walo	*ft_find_biggest(walo *head);

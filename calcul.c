@@ -3,7 +3,7 @@
 
 int ft_min_ra(int i, int j, int target, int current)
 {
-	if (i > j)//rra
+	if (i > j)
 	{
 		if (current > target)
 			return (-(j - 1));
@@ -11,7 +11,7 @@ int ft_min_ra(int i, int j, int target, int current)
 	}
 	else
 	{
-		if (current > target)//ra
+		if (current > target)
 			return ((i + 1));
 		return (i);
 	}
@@ -33,12 +33,12 @@ long	ft_custom_abs(long	x)
 	return (x);
 }
 
-int	ft_calculate_total(int arr[1][3])
+int	ft_calculate_total(int arr[3])
 {		
-	return (ft_custom_abs(arr[0][0]) + ft_custom_abs(arr[0][1]) + ft_custom_abs(arr[0][2]));
+	return (ft_custom_abs(arr[0]) + ft_custom_abs(arr[1]) + ft_custom_abs(arr[2]));
 }
 
-int median (walo *head)
+int median(walo *head)
 {
 	int *arr;
 	int count;

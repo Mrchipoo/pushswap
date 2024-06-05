@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 16:47:21 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/05 23:12:20 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	ft_check(walo **head_a, walo **head_b)
 void	ft_calculate(walo **head_a, walo **head_b)
 {
 	walo	*current2;
-	int	arr[1][3];
-	int	Temp[1][3];
+	int	arr[3];
+	int	Temp[3];
 	int i;
 	int len;
 	int total;
@@ -58,51 +58,51 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	i = 0;
 	total = -1;
 	len = ft_lenght(*head_b, 1, NULL);
-	arr[0][0] = ft_find_target_a((*head_a),current2);
-	arr[0][1] = ft_min_rb(i, len - i);
-	arr[0][2] = 0;
+	arr[0] = ft_find_target_a((*head_a),current2);
+	arr[1] = ft_min_rb(i, len - i);
+	arr[2] = 0;
 	while (current2 != NULL)
 	{
-		arr[0][0] = ft_find_target_a((*head_a),current2);
-		arr[0][1] = ft_min_rb(i, len - i);
-		if (arr[0][0] >= 0 && arr[0][1] >= 0)
+		arr[0] = ft_find_target_a((*head_a),current2);
+		arr[1] = ft_min_rb(i, len - i);
+		if (arr[0] >= 0 && arr[1] >= 0)
 		{
-			if (arr[0][0] >= arr[0][1])
+			if (arr[0] >= arr[1])
 			{
-				arr[0][2] = arr[0][1];
-				arr[0][0] = arr[0][0] - arr[0][1];
-				arr[0][1] = 0;
+				arr[2] = arr[1];
+				arr[0] = arr[0] - arr[1];
+				arr[1] = 0;
 			}
-			else if (arr[0][0] <  arr[0][1])
+			else if (arr[0] <  arr[1])
 			{
-				arr[0][2] = arr[0][0];
-				arr[0][1] = arr[0][1] - arr[0][0];
-				arr[0][0] = 0;
+				arr[2] = arr[0];
+				arr[1] = arr[1] - arr[0];
+				arr[0] = 0;
 			}
 		}
-		else if (arr[0][0] < 0 && arr[0][1] < 0)
+		else if (arr[0] < 0 && arr[1] < 0)
 		{
-			if (arr[0][0] >= arr[0][1])
+			if (arr[0] >= arr[1])
 			{
-				arr[0][2] = arr[0][0];
-				arr[0][1] = arr[0][1] - arr[0][0];
-				arr[0][0] = 0;
+				arr[2] = arr[0];
+				arr[1] = arr[1] - arr[0];
+				arr[0] = 0;
 			}
-			else if (arr[0][0] <=  arr[0][1])
+			else if (arr[0] <=  arr[1])
 			{
-				arr[0][2] = arr[0][1];
-				arr[0][0] = arr[0][0] - arr[0][1];
-				arr[0][1] = 0;
+				arr[2] = arr[1];
+				arr[0] = arr[0] - arr[1];
+				arr[1] = 0;
 			}
 		}
-		else//if one of ra or rb have diffrent sign because i dont enter if above so i change value for rrr/rr
-			arr[0][2] = 0;
+		else
+			arr[2] = 0;
 		total_curr = ft_calculate_total(arr);
-		if (total == -1 ||  total_curr <= total)//Temp is cheapest 
+		if (total == -1 ||  total_curr <= total)
 		{
-			Temp[0][0] = arr[0][0]; // ra/rra
-			Temp[0][1] = arr[0][1]; // rb/rrb
-			Temp[0][2] = arr[0][2]; // rr/rrr
+			Temp[0] = arr[0];
+			Temp[1] = arr[1]; 
+			Temp[2] = arr[2];
 			total = total_curr;
 		}
 		current2 = current2->next;
