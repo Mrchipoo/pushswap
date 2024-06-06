@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   help.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 23:12:20 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/06 17:45:24 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_check(walo **head_a, walo **head_b)
 {
-	t_lis *lis;
+	t_lis	*lis;
 	int	i;
-	int size_a;
+	int	size_a;
 	int	j;
-	int mid;
-	
+	int	mid;
+
 	mid = median(*head_a);
 	size_a = ft_lenght(*head_a, 1, NULL);
 	lis = ft_array(*head_a);
@@ -49,21 +49,21 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	walo	*current2;
 	int	arr[3];
 	int	Temp[3];
-	int i;
-	int len;
-	int total;
-	int total_curr;
-	
+	int	i;
+	int	len;
+	int	total;
+	int	total_curr;
+
 	current2 = *head_b;
 	i = 0;
 	total = -1;
 	len = ft_lenght(*head_b, 1, NULL);
-	arr[0] = ft_find_target_a((*head_a),current2);
+	arr[0] = ft_find_target_a((*head_a), current2);
 	arr[1] = ft_min_rb(i, len - i);
 	arr[2] = 0;
 	while (current2 != NULL)
 	{
-		arr[0] = ft_find_target_a((*head_a),current2);
+		arr[0] = ft_find_target_a((*head_a), current2);
 		arr[1] = ft_min_rb(i, len - i);
 		if (arr[0] >= 0 && arr[1] >= 0)
 		{
@@ -73,7 +73,7 @@ void	ft_calculate(walo **head_a, walo **head_b)
 				arr[0] = arr[0] - arr[1];
 				arr[1] = 0;
 			}
-			else if (arr[0] <  arr[1])
+			else if (arr[0] < arr[1])
 			{
 				arr[2] = arr[0];
 				arr[1] = arr[1] - arr[0];
@@ -88,7 +88,7 @@ void	ft_calculate(walo **head_a, walo **head_b)
 				arr[1] = arr[1] - arr[0];
 				arr[0] = 0;
 			}
-			else if (arr[0] <=  arr[1])
+			else if (arr[0] <= arr[1])
 			{
 				arr[2] = arr[1];
 				arr[0] = arr[0] - arr[1];
@@ -98,32 +98,32 @@ void	ft_calculate(walo **head_a, walo **head_b)
 		else
 			arr[2] = 0;
 		total_curr = ft_calculate_total(arr);
-		if (total == -1 ||  total_curr <= total)
+		if (total == -1 || total_curr <= total)
 		{
 			Temp[0] = arr[0];
-			Temp[1] = arr[1]; 
+			Temp[1] = arr[1];
 			Temp[2] = arr[2];
 			total = total_curr;
 		}
 		current2 = current2->next;
 		i++;
 	}
-	ft_action(head_a, head_b,Temp);
+	ft_action(head_a, head_b, Temp);
 }
 
-void ft_last_rotate(walo **head_a)
+void	ft_last_rotate(walo **head_a)
 {
-	walo *current;
+	walo	*current;
 	int	i;
 	int	len;
 	int	ra;
-	walo *temp;
+	walo	*temp;
 
 	i = 0;
 	temp = *head_a;
 	len = ft_lenght(*head_a, 1, NULL);
 	current = ft_find_min(*head_a);
-	while (temp != NULL &&  current->data != temp->data)
+	while (temp != NULL && current->data != temp->data)
 	{
 		i++;
 		temp = temp->next;
@@ -135,11 +135,11 @@ void ft_last_rotate(walo **head_a)
 void	ft_last_loop(walo **head_a, walo **head_b)
 {
 
-	ft_check(head_a,head_b);
+	ft_check(head_a, head_b);
 	while (*head_b != NULL)
 	{
-		ft_calculate(head_a,head_b);
-		ft_push_2a(head_a,head_b);
+		ft_calculate(head_a, head_b);
+		ft_push_2a(head_a, head_b);
 	}
 	ft_last_rotate(head_a);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:15:49 by echoubby          #+#    #+#             */
 /*   Updated: 2024/06/05 13:13:36 by mba              ###   ########.fr       */

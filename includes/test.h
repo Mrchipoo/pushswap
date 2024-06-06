@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 23:09:10 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/06 17:53:09 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@
 # include <unistd.h>
 # define TEST_H
 
-typedef struct  walo
+typedef struct walo
 {
-    int data;
-    struct walo *next;
-}walo;
+	int	data;
+	struct walo	*next;
+} walo;
 
 typedef struct t_lis
 {
-    int *arr;
-    int len;
-}   t_lis;
+	int	*arr;
+	int	len;
+} t_lis;
 
 void	print_list(walo *head, int mode);
-void	ft_push_2a(walo **head_a,walo **head_b);
-void	ft_action(walo **head_a, walo **head_b,int [3]);
+void	ft_push_2a(walo **head_a, walo **head_b);
+void	ft_action(walo **head_a, walo **head_b, int [3]);
 void	ft_do_it(walo	**head, int	rotate,int	mode);
-void	ft_push_2b(walo **head_a,walo **head_b);
+void	ft_push_2b(walo **head_a, walo **head_b);
 void	ft_rotate(walo **head, int mode);
 void	ft_rr(walo **head_a, walo **head_b);
 void	ft_swap(walo **head_a, int mode);
@@ -49,17 +49,17 @@ void	ft_check_duplicate(walo	*head);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char	*s1, char	*s2);
 char	*ft_strdup(char	*s);
-int     ft_atoi(char *nptr);
-int     ft_lenght(walo *head, int mode, char	*str);
-int     *ft_empty_array(walo *head);
-int     ft_sorted(walo	*head);
-int     ft_min_ra(int i, int j, int target, int current);
-int     ft_min_rb(int i, int j);
-long     ft_custom_abs(long x);
+int	ft_atoi(char *nptr);
+int	ft_lenght(walo *head, int mode, char	*str);
+int	*ft_empty_array(walo *head);
+int	ft_sorted(walo	*head);
+int	ft_min_ra(int i, int j, int target, int current);
+int	ft_min_rb(int i, int j);
+long	ft_custom_abs(long x);
 walo	*ft_search(int	argc, char	**argv);
-int     ft_calculate_total(int arr[3]);
-int     median (walo *head);
-int     ft_find_target_a(walo *head, walo *node);
+int	ft_calculate_total(int arr[3]);
+int	median (walo *head);
+int	ft_find_target_a(walo *head, walo *node);
 walo	*ft_fill(char	**str);
 walo    *ft_last_node(walo *head);
 walo    *ft_last_before(walo *head);

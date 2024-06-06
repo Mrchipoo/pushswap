@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mba <mba@student.42.fr>                    +#+  +:+       +#+         #
+#    By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/21 14:21:06 by echoubby          #+#    #+#              #
 #    Updated: 2024/06/05 22:38:06 by mba              ###   ########.fr        #

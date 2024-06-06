@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:38:18 by echoubby          #+#    #+#             */
 /*   Updated: 2024/06/03 19:44:13 by mba              ###   ########.fr       */

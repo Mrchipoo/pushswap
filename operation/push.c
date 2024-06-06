@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:59:40 by echoubby          #+#    #+#             */
 /*   Updated: 2024/06/05 13:13:45 by mba              ###   ########.fr       */

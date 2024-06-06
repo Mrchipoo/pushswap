@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 17:38:57 by echoubby          #+#    #+#             */
+/*   Updated: 2024/06/06 17:41:46 by echoubby         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../includes/test.h"
 
 int	ft_isdigit(int c)
@@ -33,7 +43,7 @@ int	ft_atoi(char *nptr)
 
 int	ft_lenght(walo *head, int mode, char	*str)
 {
-	int i;
+	int	i;
 	walo	*current;
 
 	i = 0;
