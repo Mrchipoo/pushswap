@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:27:50 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 22:38:21 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/06 17:07:27 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ walo	*ft_anti_error(int argc, char **argv)
 
 	current = NULL;
 	if (1 == argc || (2 == argc && !argv[1][0]))
-		return (NULL);
+		ft_free_stack(NULL, NULL, 0);
 	current = ft_search(argc,argv);
 	return (current);
 }
@@ -87,7 +87,7 @@ int	main(int	argc, char	**argv)
 	if (head_a == NULL)
 		ft_free_stack(&head_a, NULL, 1);
 	if (ft_sorted(head_a))
-		ft_free_stack(&head_a, &head_b, 0);
+		ft_free_stack(&head_a, &head_b, 1);
 	if (ft_lenght(head_a, 1, NULL) == 2)
 		ft_swap(&head_a, 0);
 	if (ft_lenght(head_a, 1, NULL) == 3)

@@ -66,7 +66,7 @@ t_lis	*ft_fill_LIS4(int	*squence, int	max)
 	return (lis);
 }
 
-t_lis	*ft_main_LIS(int arr[], int n)
+t_lis	*ft_main_LIS(int arr[], int n)//1
 {
 	int	i;
 	int	*LIS;
