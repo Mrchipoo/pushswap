@@ -9,16 +9,15 @@
 /*   Updated: 2024/06/06 17:45:24 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../includes/test.h"
 
 void	ft_check(walo **head_a, walo **head_b)
 {
 	t_lis	*lis;
-	int	i;
-	int	size_a;
-	int	j;
-	int	mid;
+	int		i;
+	int		size_a;
+	int		j;
+	int		mid;
 
 	mid = median(*head_a);
 	size_a = ft_lenght(*head_a, 1, NULL);
@@ -47,12 +46,12 @@ void	ft_check(walo **head_a, walo **head_b)
 void	ft_calculate(walo **head_a, walo **head_b)
 {
 	walo	*current2;
-	int	arr[3];
-	int	Temp[3];
-	int	i;
-	int	len;
-	int	total;
-	int	total_curr;
+	int		arr[3];
+	int		temp[3];
+	int		i;
+	int		len;
+	int		total;
+	int		total_curr;
 
 	current2 = *head_b;
 	i = 0;
@@ -100,23 +99,23 @@ void	ft_calculate(walo **head_a, walo **head_b)
 		total_curr = ft_calculate_total(arr);
 		if (total == -1 || total_curr <= total)
 		{
-			Temp[0] = arr[0];
-			Temp[1] = arr[1];
-			Temp[2] = arr[2];
+			temp[0] = arr[0];
+			temp[1] = arr[1];
+			temp[2] = arr[2];
 			total = total_curr;
 		}
 		current2 = current2->next;
 		i++;
 	}
-	ft_action(head_a, head_b, Temp);
+	ft_action(head_a, head_b, temp);
 }
 
 void	ft_last_rotate(walo **head_a)
 {
 	walo	*current;
-	int	i;
-	int	len;
-	int	ra;
+	int		i;
+	int		len;
+	int		ra;
 	walo	*temp;
 
 	i = 0;
@@ -134,7 +133,6 @@ void	ft_last_rotate(walo **head_a)
 
 void	ft_last_loop(walo **head_a, walo **head_b)
 {
-
 	ft_check(head_a, head_b);
 	while (*head_b != NULL)
 	{

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "includes/test.h"
 
-int ft_min_ra(int i, int j, int target, int current)
+int	ft_min_ra(int i, int j, int target, int current)
 {
 	if (i > j)
 	{
@@ -27,7 +27,7 @@ int ft_min_ra(int i, int j, int target, int current)
 	}
 }
 
-int ft_min_rb(int i, int j)
+int	ft_min_rb(int i, int j)
 {
 	if (i == j)
 		return (i);
@@ -36,7 +36,7 @@ int ft_min_rb(int i, int j)
 	return (i);
 }
 
-long	ft_custom_abs(long	x)
+long	ft_abs(long x)
 {
 	if (x < 0)
 		return (-x);
@@ -44,16 +44,16 @@ long	ft_custom_abs(long	x)
 }
 
 int	ft_calculate_total(int arr[3])
-{		
-	return (ft_custom_abs(arr[0]) + ft_custom_abs(arr[1]) + ft_custom_abs(arr[2]));
+{
+	return (ft_abs(arr[0]) + ft_abs(arr[1]) + ft_abs(arr[2]));
 }
 
-int median(walo *head)
+int	median(walo *head)
 {
-	int *arr;
-	int count;
-	int result;
-	
+	int	*arr;
+	int	count;
+	int	result;
+
 	count = ft_lenght(head, 1, NULL);
 	arr = ft_empty_array(head);
 	if (arr == NULL)

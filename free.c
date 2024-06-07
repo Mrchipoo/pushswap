@@ -14,7 +14,7 @@
 void	ft_free(walo **head)
 {
 	walo	*current;
-	
+
 	if (head == NULL || *head == NULL)
 		return ;
 	while (*head)
@@ -26,7 +26,7 @@ void	ft_free(walo **head)
 	*head = NULL;
 }
 
-void	ft_free_stack(walo	**head_a, walo	**head_b, int	mode)
+void	ft_free_stack(walo **head_a, walo **head_b, int mode)
 {
 	ft_free(head_a);
 	ft_free(head_b);

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "includes/test.h"
 
-void	ft_strlcpy(char *dst, const char *src, int	size)
+void	ft_strlcpy(char *dst, const char *src, int size)
 {
 	int	i;
 

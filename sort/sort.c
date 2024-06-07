@@ -24,10 +24,11 @@ void	ft_small_sort(walo **head)
 	if ((*head)->data > ((*head)->next)->data)
 		ft_swap(head, 0);
 }
-walo *ft_find_min(walo *head)
+
+walo	*ft_find_min(walo *head)
 {
-	int min;
-	walo *node_min;
+	int		min;
+	walo	*node_min;
 
 	min = head->data;
 	node_min = head;
@@ -44,11 +45,12 @@ walo *ft_find_min(walo *head)
 	}
 	return (node_min);
 }
+
 walo	*ft_find_biggest(walo *head)
 {
 	walo	*current;
 	walo	*node;
-	int	max;
+	int		max;
 
 	current = head->next;
 	node = head;
@@ -66,17 +68,18 @@ walo	*ft_find_biggest(walo *head)
 	}
 	return (node);
 }
-int *ft_empty_array(walo *head)
+
+int	*ft_empty_array(walo *head)
 {
 	int	*arr;
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = ft_lenght(head, 1, NULL);
 	arr = malloc(count * sizeof(int));
 	if (arr == NULL)
-		return NULL;
+		return (NULL);
 	while (head != NULL)
 	{
 		arr[i] = head->data;

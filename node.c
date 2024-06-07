@@ -35,7 +35,7 @@ walo	*ft_create_node(int data)
 
 walo	*ft_last_before(walo *head)
 {
-	walo *new_node;
+	walo	*new_node;
 
 	new_node = head;
 	while ((new_node->next)->next != NULL)
@@ -46,7 +46,7 @@ walo	*ft_last_before(walo *head)
 int	ft_sorted(walo	*head)
 {
 	walo	*tmp;
-	
+
 	tmp = head;
 	while (tmp->next != NULL)
 	{
@@ -56,13 +56,14 @@ int	ft_sorted(walo	*head)
 	}
 	return (1);
 }
+
 walo	*ft_fill(char	**str)
 {
-	int	i;
+	int		i;
 	walo	*new_node;
 	walo	*current;
 	walo	*first;
-	
+
 	i = 0;
 	current = NULL;
 	while (str[i])

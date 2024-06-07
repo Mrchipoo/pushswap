@@ -18,7 +18,7 @@ int	ft_isdigit(int c)
 
 int	ft_atoi(char *nptr)
 {
-	int	sign;
+	int		sign;
 	long	res;
 
 	sign = 1;
@@ -43,7 +43,7 @@ int	ft_atoi(char *nptr)
 
 int	ft_lenght(walo *head, int mode, char	*str)
 {
-	int	i;
+	int		i;
 	walo	*current;
 
 	i = 0;

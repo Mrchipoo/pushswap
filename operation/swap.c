@@ -17,7 +17,7 @@ void	ft_swap(walo **head, int mode)
 	walo	*temp;
 	walo	*temp1;
 
-	if (head == NULL || *head == NULL ||(*head)->next == NULL)
+	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return ;
 	temp = (*head);
 	temp1 = (*head)->next;

@@ -16,14 +16,14 @@ void	ft_check_duplicate(walo	*head)
 {
 	walo	*tmp;
 	walo	*tmp2;
-	int	i;
-	
+	int		i;
+
 	tmp = head;
-	while(tmp != NULL)
+	while (tmp != NULL)
 	{
 		i = 0;
 		tmp2 = head;
-		while(tmp2 != NULL)
+		while (tmp2 != NULL)
 		{
 			if (tmp->data == tmp2->data)
 				i++;
@@ -42,24 +42,25 @@ walo	*ft_anti_error(int argc, char **argv)
 	current = NULL;
 	if (1 == argc || (2 == argc && !argv[1][0]))
 		ft_free_stack(NULL, NULL, 0);
-	current = ft_search(argc,argv);
+	current = ft_search(argc, argv);
 	return (current);
 }
-walo	*ft_search(int	argc, char	**argv)
+
+walo	*ft_search(int argc, char **argv)
 {
 	char	*s1;
 	int		i;
 	char	**str;
 	walo	*current;
 	char	*temp;
-	
+
 	i = 1;
 	s1 = ft_strdup("");
 	if (!s1)
-		return(NULL);
+		return (NULL);
 	while (i < argc)
 	{
-		temp = ft_strjoin(s1,argv[i]);
+		temp = ft_strjoin(s1, argv[i]);
 		if (!temp)
 			return (NULL);
 		free(s1);
@@ -73,8 +74,8 @@ walo	*ft_search(int	argc, char	**argv)
 	current = ft_fill(str);
 	return (current);
 }
-	
-int	main(int	argc, char	**argv)
+
+int	main(int argc, char **argv)
 {
 	walo	*head_a;
 	walo	*head_b;

@@ -3,45 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   LIS.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:34:55 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:35:01 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/07 15:49:44 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "includes/test.h"
 
-void	ft_fill_LIS(int	**LIS, int **prev, int	n)
+void	ft_fill_lis(int **lis, int **prev, int n)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	*LIS = malloc(sizeof(int) * n);
+	j = 0;
+	*lis = malloc(sizeof(int) * n);
 	*prev = malloc(sizeof(int) * n);
-	if (*prev == NULL || *LIS == NULL)
+	if (*prev == NULL || *lis == NULL)
 		return ;
-	while (i < n)
+	while (j < n)
 	{
-		(*LIS)[i] = 1;
-		(*prev)[i] = -1;
-		i++;
+		(*lis)[j] = 1;
+		(*prev)[j] = -1;
+		j++;
 	}
 }
 
-void ft_fill_LIS2(int arr[], int *LIS, int	*prev, int	n)
+void	ft_fill_lis2(int arr[], int *lis, int *prev, int n)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while(i < n)
+	while (i < n)
 	{
 		j = 0;
 		while (j < i)
 		{
-			if (arr[j] < arr[i] && LIS[j] + 1 > LIS[i])
+			if (arr[j] < arr[i] && lis[j] + 1 > lis[i])
 			{
-				LIS[i] = LIS[j] + 1;
+				lis[i] = lis[j] + 1;
 				prev[i] = j;
 			}
 			j++;
@@ -50,7 +50,7 @@ void ft_fill_LIS2(int arr[], int *LIS, int	*prev, int	n)
 	}
 }
 
-void	ft_fill_LIS3(int	**squence, int	pos, int	index, int	arr[], int	prev[])
+void	ft_fill_lis3(int **squence, int pos, int index, int arr[], int prev[])
 {
 	*squence = malloc(sizeof(int) * (pos + 1));
 	if (*squence == NULL)
@@ -59,11 +59,11 @@ void	ft_fill_LIS3(int	**squence, int	pos, int	index, int	arr[], int	prev[])
 	{
 		(*squence)[pos] = arr[index];
 		pos--;
-		index  = prev[index];
+		index = prev[index];
 	}
 }
 
-t_lis	*ft_fill_LIS4(int	*squence, int	max)
+t_lis	*ft_fill_lis4(int *squence, int max)
 {
 	t_lis	*lis;
 
@@ -72,30 +72,30 @@ t_lis	*ft_fill_LIS4(int	*squence, int	max)
 	if (lis == NULL)
 		return (NULL);
 	lis->arr = squence;
-	lis->len= max;
+	lis->len = max;
 	return (lis);
 }
 
-t_lis	*ft_main_LIS(int arr[], int n)//1
+t_lis	*ft_main_lis(int arr[], int n)
 {
 	int	i;
-	int	*LIS;
+	int	*lis;
 	int	index;
 	int	*prev;
 	int	*squence;
 	int	max;
-	
+
 	max = 0;
-	ft_fill_LIS(&LIS, &prev, n);
-	if (LIS == NULL || prev == NULL)
+	ft_fill_LIS(&lis, &prev, n);
+	if (lis == NULL || prev == NULL)
 		return (NULL);
-	ft_fill_LIS2(arr, LIS, prev, n);
+	ft_fill_LIS2(arr, lis, prev, n);
 	i = 0;
 	while (i < n)
 	{
-		if (max < LIS[i])
+		if (max < lis[i])
 		{
-			max = LIS[i];
+			max = lis[i];
 			index = i;
 		}
 		i++;
@@ -103,7 +103,7 @@ t_lis	*ft_main_LIS(int arr[], int n)//1
 	ft_fill_LIS3(&squence, max - 1, index, arr, prev);
 	if (squence == NULL)
 		return (NULL);
-	free(LIS);
+	free(lis);
 	free(prev);
 	return (ft_fill_LIS4(squence, max));
 }
