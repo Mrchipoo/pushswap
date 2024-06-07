@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/08 00:21:14 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/08 00:51:59 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/test.h"
@@ -49,25 +49,17 @@ void	ft_check(t_walo **head_a, t_walo **head_b)
 	free(lis);
 }
 
-// void	ft_before_cal(int arr[1][3], int temp[1][3])
-// {
-// 	int	total;
+void	ft_before_cal(int *arr)
+{
+	arr[2] = 0;
+	if (arr[0] >= 0 && arr[1] >= 0)
+		ft_positive(arr);
+	else if (arr[0] < 0 && arr[1] < 0)
+		ft_negative(arr);
+	else    
+		arr[2] = 0;
+}
 
-// 	total = -1;
-// 	if (arr[0][0] >= 0 && arr[0][1] >= 0)
-//  		ft_positive(arr);
-//  	else if (arr[0][0] < 0 && arr[0][1] < 0)
-//  		ft_negative(arr);
-//  	else    
-// 		arr[0][2] = 0;
-// 	if (total == -1 || ft_calculate_total(arr[0]) <= total)
-// 	{
-// 		temp[0][0] = arr[0][0];
-// 		temp[0][1] = arr[0][1];
-// 		temp[0][2] = arr[0][2];
-// 		total = ft_calculate_total(arr[0]);
-//  	}
-// }
 void	ft_calculate(t_walo **head_a, t_walo **head_b)
 {
 	t_walo	*current2;
@@ -81,17 +73,11 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 	total = -1;
 	arr[0] = ft_find_target_a((*head_a), current2);
 	arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
-	arr[2] = 0;
 	while (current2 != NULL)
 	{
 		arr[0] = ft_find_target_a((*head_a), current2);
 		arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
-		if (arr[0] >= 0 && arr[1] >= 0)
-			ft_positive(&arr);
-		else if (arr[0] < 0 && arr[1] < 0)
-			ft_negative(&arr);
-		else
-			arr[2] = 0;
+		ft_before_cal(arr);
 		if (total == -1 || ft_calculate_total(arr) <= total)
 		{
 			temp[0] = arr[0];

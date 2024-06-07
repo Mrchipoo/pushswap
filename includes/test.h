@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 20:03:15 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/07 16:00:16 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/08 00:40:45 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct t_lis
 }	t_lis;
 
 void	ft_push_2a(t_walo **head_a, t_walo **head_b);
-void	ft_negative(int arr[0][3]);
-void	ft_positive(int arr[0][3]);
+void	ft_negative(int *arr);
+void	ft_positive(int *arr);
 void	ft_action(t_walo **head_a, t_walo **head_b, int arr[3]);
 void	ft_do_it(t_walo **head, int rotate, int mode);
 void	ft_push_2b(t_walo **head_a, t_walo **head_b);

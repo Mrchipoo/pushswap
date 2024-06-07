@@ -6,7 +6,7 @@
 /*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:34:29 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:34:33 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/08 00:40:21 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "includes/test.h"
@@ -44,34 +44,34 @@ t_lis	*ft_fill_lis5(t_lis **liss, int *squence)
 	return (*liss);
 }
 
-void	ft_positive(int arr[0][3])
+void	ft_positive(int *arr)
 {
-	if (arr[0][0] >= arr[0][1])
+	if (arr[0] >= arr[1])
 	{
-		arr[0][2] = arr[0][1];
-		arr[0][0] = arr[0][0] - arr[0][1];
-		arr[0][1] = 0;
+		arr[2] = arr[1];
+		arr[0] = arr[0] - arr[1];
+		arr[1] = 0;
 	}
-	else if (arr[0][0] < arr[0][1])
+	else if (arr[0] < arr[1])
 	{
-		arr[0][2] = arr[0][0];
-		arr[0][1] = arr[0][1] - arr[0][0];
-		arr[0][0] = 0;
+		arr[2] = arr[0];
+		arr[1] = arr[1] - arr[0];
+		arr[0] = 0;
 	}
 }
 
-void	ft_negative(int arr[0][3])
+void	ft_negative(int *arr)
 {
-	if (arr[0][0] >= arr[0][1])
+	if (arr[0] >= arr[1])
 	{
-		arr[0][2] = arr[0][0];
-		arr[0][1] = arr[0][1] - arr[0][0];
-		arr[0][0] = 0;
+		arr[2] = arr[0];
+		arr[1] = arr[1] - arr[0];
+		arr[0] = 0;
 	}
-	else if (arr[0][0] <= arr[0][1])
+	else if (arr[0] <= arr[1])
 	{
-		arr[0][2] = arr[0][1];
-		arr[0][0] = arr[0][0] - arr[0][1];
-		arr[0][1] = 0;
+		arr[2] = arr[1];
+		arr[0] = arr[0] - arr[1];
+		arr[1] = 0;
 	}
 }
