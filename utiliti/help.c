@@ -49,34 +49,36 @@ void	ft_check(t_walo **head_a, t_walo **head_b)
 	free(lis);
 }
 
-void	ft_before_cal(int arr[0][3], int temp[0][3])
-{
-	int	total;
+// void	ft_before_cal(int arr[1][3], int temp[1][3])
+// {
+// 	int	total;
 
-	total = -1;
-	if (arr[0][0] >= 0 && arr[0][1] >= 0)
- 		ft_positive(arr);
- 	else if (arr[0][0] < 0 && arr[0][1] < 0)
- 		ft_negative(arr);
- 	else    
-		arr[0][2] = 0;
-	if (total == -1 || ft_calculate_total(arr[][3]) <= total)
-	{
-		temp[0][0] = arr[0][0];
-		temp[0][1] = arr[0][1];
-		temp[0][2] = arr[0][2];
-		total = ft_calculate_total(arr[][3]);
- 	}
-}
+// 	total = -1;
+// 	if (arr[0][0] >= 0 && arr[0][1] >= 0)
+//  		ft_positive(arr);
+//  	else if (arr[0][0] < 0 && arr[0][1] < 0)
+//  		ft_negative(arr);
+//  	else    
+// 		arr[0][2] = 0;
+// 	if (total == -1 || ft_calculate_total(arr[0]) <= total)
+// 	{
+// 		temp[0][0] = arr[0][0];
+// 		temp[0][1] = arr[0][1];
+// 		temp[0][2] = arr[0][2];
+// 		total = ft_calculate_total(arr[0]);
+//  	}
+// }
 void	ft_calculate(t_walo **head_a, t_walo **head_b)
 {
 	t_walo	*current2;
 	int		arr[3];
 	int		temp[3];
 	int		i;
+	int	total;
 
 	current2 = *head_b;
 	i = 0;
+	total = -1;
 	arr[0] = ft_find_target_a((*head_a), current2);
 	arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
 	arr[2] = 0;
@@ -84,7 +86,19 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 	{
 		arr[0] = ft_find_target_a((*head_a), current2);
 		arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
-		ft_before_cal(&arr, &temp);
+		if (arr[0] >= 0 && arr[1] >= 0)
+ 			ft_positive(&arr);
+ 		else if (arr[0] < 0 && arr[1] < 0)
+ 			ft_negative(&arr);
+ 		else    
+			arr[2] = 0;
+		if (total == -1 || ft_calculate_total(arr) <= total)
+		{
+			temp[0] = arr[0];
+			temp[1] = arr[1];
+			temp[2] = arr[2];
+			total = ft_calculate_total(arr);
+ 		}
 		current2 = current2->next;
 		i++;
 	}
