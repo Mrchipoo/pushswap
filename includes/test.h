@@ -25,7 +25,7 @@ typedef struct walo
 typedef struct t_lis
 {
 	int	*arr;
-	int	len;
+	int	max;
 	int	index;
 }	t_lis;
 
