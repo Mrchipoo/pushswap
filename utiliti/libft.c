@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:38:57 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:41:46 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:01:34 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/test.h"
@@ -41,10 +41,10 @@ int	ft_atoi(char *nptr)
 	return (res * sign);
 }
 
-int	ft_lenght(walo *head, int mode, char	*str)
+int	ft_lenght(t_walo *head, int mode, char	*str)
 {
 	int		i;
-	walo	*current;
+	t_walo	*current;
 
 	i = 0;
 	current = head;

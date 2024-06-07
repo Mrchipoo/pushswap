@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:34:14 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:34:22 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:02:23 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "includes/test.h"
 
-walo	*ft_diff(walo	*head, walo	*node)
+t_walo	*ft_diff(t_walo	*head, t_walo	*node)
 {
 	long	min;
 	long	current;
-	walo	*target;
-	walo	*check;
+	t_walo	*target;
+	t_walo	*check;
 
 	target = head;
 	check = ft_find_min(head);
 	if (node->data == -2147483648)
 		return (check);
-	min = ft_custom_abs((long)head->data - (long)node->data);
+	min = ft_abs((long)head->data - (long)node->data);
 	while (head != NULL)
 	{
-		current = ft_custom_abs((long)head->data - (long)node->data);
+		current = ft_abs((long)head->data - (long)node->data);
 		if (current <= min)
 		{
 			min = current;
@@ -36,7 +36,7 @@ walo	*ft_diff(walo	*head, walo	*node)
 	return (target);
 }
 
-t_lis	*ft_array(walo *head)
+t_lis	*ft_array(t_walo *head)
 {
 	int		*arr;
 	int		count;
@@ -44,20 +44,20 @@ t_lis	*ft_array(walo *head)
 
 	count = ft_lenght(head, 1, NULL);
 	arr = ft_empty_array(head);
-	lis = ft_main_LIS(arr, count);
+	lis = ft_main_lis(arr, count);
 	free(arr);
 	if (lis == NULL)
 		return (NULL);
 	return (lis);
 }
 
-int	ft_find_target_a(walo *head, walo *node)
+int	ft_find_target_a(t_walo *head, t_walo *node)
 {
 	int		i;
 	int		len;
 	int		ra;
-	walo	*target;
-	walo	*temp2;
+	t_walo	*target;
+	t_walo	*temp2;
 
 	i = 0;
 	len = ft_lenght(head, 1, NULL);
@@ -78,7 +78,7 @@ int	ft_find_target_a(walo *head, walo *node)
 	return (ra);
 }
 
-void	ft_do_it(walo **head, int rotate, int mode)
+void	ft_do_it(t_walo **head, int rotate, int mode)
 {
 	while (rotate != 0)
 	{
@@ -101,7 +101,7 @@ void	ft_do_it(walo **head, int rotate, int mode)
 	}
 }
 
-void	ft_action(walo **head_a, walo **head_b, int arr[3])
+void	ft_action(t_walo **head_a, t_walo **head_b, int arr[3])
 {
 	int	ra;
 	int	rb;

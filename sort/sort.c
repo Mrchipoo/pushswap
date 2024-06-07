@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:38:18 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/03 19:44:13 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/07 16:01:09 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/test.h"
 
-void	ft_small_sort(walo **head)
+void	ft_small_sort(t_walo **head)
 {
-	walo	*biggest_node;
+	t_walo	*biggest_node;
 
 	biggest_node = ft_find_biggest(*head);
 	if ((*head) == biggest_node)
@@ -25,10 +25,10 @@ void	ft_small_sort(walo **head)
 		ft_swap(head, 0);
 }
 
-walo	*ft_find_min(walo *head)
+t_walo	*ft_find_min(t_walo *head)
 {
 	int		min;
-	walo	*node_min;
+	t_walo	*node_min;
 
 	min = head->data;
 	node_min = head;
@@ -46,10 +46,10 @@ walo	*ft_find_min(walo *head)
 	return (node_min);
 }
 
-walo	*ft_find_biggest(walo *head)
+t_walo	*ft_find_biggest(t_walo *head)
 {
-	walo	*current;
-	walo	*node;
+	t_walo	*current;
+	t_walo	*node;
 	int		max;
 
 	current = head->next;
@@ -69,7 +69,7 @@ walo	*ft_find_biggest(walo *head)
 	return (node);
 }
 
-int	*ft_empty_array(walo *head)
+int	*ft_empty_array(t_walo *head)
 {
 	int	*arr;
 	int	i;

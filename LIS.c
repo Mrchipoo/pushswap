@@ -86,10 +86,10 @@ t_lis	*ft_main_lis(int arr[], int n)
 	int	max;
 
 	max = 0;
-	ft_fill_LIS(&lis, &prev, n);
+	ft_fill_lis(&lis, &prev, n);
 	if (lis == NULL || prev == NULL)
 		return (NULL);
-	ft_fill_LIS2(arr, lis, prev, n);
+	ft_fill_lis2(arr, lis, prev, n);
 	i = 0;
 	while (i < n)
 	{
@@ -100,10 +100,10 @@ t_lis	*ft_main_lis(int arr[], int n)
 		}
 		i++;
 	}
-	ft_fill_LIS3(&squence, max - 1, index, arr, prev);
+	ft_fill_lis3(&squence, max - 1, index, arr, prev);
 	if (squence == NULL)
 		return (NULL);
 	free(lis);
 	free(prev);
-	return (ft_fill_LIS4(squence, max));
+	return (ft_fill_lis4(squence, max));
 }

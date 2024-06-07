@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   help.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:45:24 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:01:24 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/test.h"
 
-void	ft_check(walo **head_a, walo **head_b)
+void	ft_check(t_walo **head_a, t_walo **head_b)
 {
 	t_lis	*lis;
 	int		i;
@@ -43,9 +43,9 @@ void	ft_check(walo **head_a, walo **head_b)
 	free(lis);
 }
 
-void	ft_calculate(walo **head_a, walo **head_b)
+void	ft_calculate(t_walo **head_a, t_walo **head_b)
 {
-	walo	*current2;
+	t_walo	*current2;
 	int		arr[3];
 	int		temp[3];
 	int		i;
@@ -110,13 +110,13 @@ void	ft_calculate(walo **head_a, walo **head_b)
 	ft_action(head_a, head_b, temp);
 }
 
-void	ft_last_rotate(walo **head_a)
+void	ft_last_rotate(t_walo **head_a)
 {
-	walo	*current;
+	t_walo	*current;
 	int		i;
 	int		len;
 	int		ra;
-	walo	*temp;
+	t_walo	*temp;
 
 	i = 0;
 	temp = *head_a;
@@ -131,7 +131,7 @@ void	ft_last_rotate(walo **head_a)
 	ft_do_it(head_a, ra, 0);
 }
 
-void	ft_last_loop(walo **head_a, walo **head_b)
+void	ft_last_loop(t_walo **head_a, t_walo **head_b)
 {
 	ft_check(head_a, head_b);
 	while (*head_b != NULL)

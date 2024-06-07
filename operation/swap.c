@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:59:24 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:47:24 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:00:51 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/test.h"
 
-void	ft_swap(walo **head, int mode)
+void	ft_swap(t_walo **head, int mode)
 {
-	walo	*temp;
-	walo	*temp1;
+	t_walo	*temp;
+	t_walo	*temp1;
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 		return ;
@@ -30,7 +30,7 @@ void	ft_swap(walo **head, int mode)
 		write(1, "sb\n", 3);
 }
 
-void	ft_swap_both(walo **head_a, walo **head_b)
+void	ft_swap_both(t_walo **head_a, t_walo **head_b)
 {
 	ft_swap(head_a, 2);
 	ft_swap(head_b, 2);

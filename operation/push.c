@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:59:40 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/05 13:13:45 by mba              ###   ########.fr       */
+/*   Updated: 2024/06/07 16:00:33 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/test.h"
 
-void	ft_push_2a(walo **head_a, walo **head_b)
+void	ft_push_2a(t_walo **head_a, t_walo **head_b)
 {
-	walo	*temp;
+	t_walo	*temp;
 
 	if (*head_b == NULL)
 		return ;
@@ -28,9 +28,9 @@ void	ft_push_2a(walo **head_a, walo **head_b)
 	write(1, "pa\n", 3);
 }
 
-void	ft_push_2b(walo **head_a, walo **head_b)
+void	ft_push_2b(t_walo **head_a, t_walo **head_b)
 {
-	walo	*temp;
+	t_walo	*temp;
 
 	if (*head_a == NULL)
 		return ;

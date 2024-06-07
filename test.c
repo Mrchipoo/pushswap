@@ -12,10 +12,10 @@
 
 #include "includes/test.h"
 
-void	ft_check_duplicate(walo	*head)
+void	ft_check_duplicate(t_walo	*head)
 {
-	walo	*tmp;
-	walo	*tmp2;
+	t_walo	*tmp;
+	t_walo	*tmp2;
 	int		i;
 
 	tmp = head;
@@ -35,9 +35,9 @@ void	ft_check_duplicate(walo	*head)
 	}
 }
 
-walo	*ft_anti_error(int argc, char **argv)
+t_walo	*ft_anti_error(int argc, char **argv)
 {
-	walo	*current;
+	t_walo	*current;
 
 	current = NULL;
 	if (1 == argc || (2 == argc && !argv[1][0]))
@@ -46,12 +46,12 @@ walo	*ft_anti_error(int argc, char **argv)
 	return (current);
 }
 
-walo	*ft_search(int argc, char **argv)
+t_walo	*ft_search(int argc, char **argv)
 {
 	char	*s1;
 	int		i;
 	char	**str;
-	walo	*current;
+	t_walo	*current;
 	char	*temp;
 
 	i = 1;
@@ -77,8 +77,8 @@ walo	*ft_search(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	walo	*head_a;
-	walo	*head_b;
+	t_walo	*head_a;
+	t_walo	*head_b;
 
 	head_b = NULL;
 	head_a = NULL;

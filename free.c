@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "includes/test.h"
 
-void	ft_free(walo **head)
+void	ft_free(t_walo **head)
 {
-	walo	*current;
+	t_walo	*current;
 
 	if (head == NULL || *head == NULL)
 		return ;
@@ -26,7 +26,7 @@ void	ft_free(walo **head)
 	*head = NULL;
 }
 
-void	ft_free_stack(walo **head_a, walo **head_b, int mode)
+void	ft_free_stack(t_walo **head_a, t_walo **head_b, int mode)
 {
 	ft_free(head_a);
 	ft_free(head_b);

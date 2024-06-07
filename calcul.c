@@ -48,7 +48,7 @@ int	ft_calculate_total(int arr[3])
 	return (ft_abs(arr[0]) + ft_abs(arr[1]) + ft_abs(arr[2]));
 }
 
-int	median(walo *head)
+int	median(t_walo *head)
 {
 	int	*arr;
 	int	count;

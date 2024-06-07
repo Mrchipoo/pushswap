@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   node.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: echoubby <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 17:35:10 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/06 17:35:14 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:02:48 by mba              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "includes/test.h"
 
-walo	*ft_last_node(walo *head)
+t_walo	*ft_last_node(t_walo *head)
 {
-	walo	*new_node;
+	t_walo	*new_node;
 
 	new_node = head;
 	while (new_node->next != NULL)
@@ -21,11 +21,11 @@ walo	*ft_last_node(walo *head)
 	return (new_node);
 }
 
-walo	*ft_create_node(int data)
+t_walo	*ft_create_node(int data)
 {
-	walo	*new_node;
+	t_walo	*new_node;
 
-	new_node = malloc(sizeof(walo));
+	new_node = malloc(sizeof(t_walo));
 	if (!new_node)
 		return (0);
 	new_node->data = data;
@@ -33,9 +33,9 @@ walo	*ft_create_node(int data)
 	return (new_node);
 }
 
-walo	*ft_last_before(walo *head)
+t_walo	*ft_last_before(t_walo *head)
 {
-	walo	*new_node;
+	t_walo	*new_node;
 
 	new_node = head;
 	while ((new_node->next)->next != NULL)
@@ -43,9 +43,9 @@ walo	*ft_last_before(walo *head)
 	return (new_node);
 }
 
-int	ft_sorted(walo	*head)
+int	ft_sorted(t_walo	*head)
 {
-	walo	*tmp;
+	t_walo	*tmp;
 
 	tmp = head;
 	while (tmp->next != NULL)
@@ -57,12 +57,12 @@ int	ft_sorted(walo	*head)
 	return (1);
 }
 
-walo	*ft_fill(char	**str)
+t_walo	*ft_fill(char	**str)
 {
 	int		i;
-	walo	*new_node;
-	walo	*current;
-	walo	*first;
+	t_walo	*new_node;
+	t_walo	*current;
+	t_walo	*first;
 
 	i = 0;
 	current = NULL;
