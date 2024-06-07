@@ -6,7 +6,7 @@
 /*   By: mba <mba@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 10:14:38 by echoubby          #+#    #+#             */
-/*   Updated: 2024/06/07 23:12:42 by echoubby         ###   ########.fr       */
+/*   Updated: 2024/06/08 00:21:14 by echoubby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../includes/test.h"
@@ -74,7 +74,7 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 	int		arr[3];
 	int		temp[3];
 	int		i;
-	int	total;
+	int		total;
 
 	current2 = *head_b;
 	i = 0;
@@ -87,10 +87,10 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 		arr[0] = ft_find_target_a((*head_a), current2);
 		arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
 		if (arr[0] >= 0 && arr[1] >= 0)
- 			ft_positive(&arr);
- 		else if (arr[0] < 0 && arr[1] < 0)
- 			ft_negative(&arr);
- 		else    
+			ft_positive(&arr);
+		else if (arr[0] < 0 && arr[1] < 0)
+			ft_negative(&arr);
+		else
 			arr[2] = 0;
 		if (total == -1 || ft_calculate_total(arr) <= total)
 		{
@@ -98,7 +98,7 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 			temp[1] = arr[1];
 			temp[2] = arr[2];
 			total = ft_calculate_total(arr);
- 		}
+		}
 		current2 = current2->next;
 		i++;
 	}
