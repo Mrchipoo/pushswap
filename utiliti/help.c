@@ -24,9 +24,9 @@ void	ft_check(t_walo **head_a, t_walo **head_b)
 	lis = ft_array(*head_a);
 	i = 0;
 	j = 0;
-	while (i < size_a - lis->len)
+	while (i < size_a - lis->max)
 	{
-		if (j != lis->len && (*head_a)->data == lis->arr[j])
+		if (j != lis->max && (*head_a)->data == lis->arr[j])
 		{
 			ft_rotate(head_a, 0);
 			j++;
@@ -49,60 +49,30 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 	int		arr[3];
 	int		temp[3];
 	int		i;
-	int		len;
 	int		total;
-	int		total_curr;
 
 	current2 = *head_b;
 	i = 0;
 	total = -1;
-	len = ft_lenght(*head_b, 1, NULL);
 	arr[0] = ft_find_target_a((*head_a), current2);
-	arr[1] = ft_min_rb(i, len - i);
+	arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
 	arr[2] = 0;
 	while (current2 != NULL)
 	{
 		arr[0] = ft_find_target_a((*head_a), current2);
-		arr[1] = ft_min_rb(i, len - i);
+		arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
 		if (arr[0] >= 0 && arr[1] >= 0)
-		{
-			if (arr[0] >= arr[1])
-			{
-				arr[2] = arr[1];
-				arr[0] = arr[0] - arr[1];
-				arr[1] = 0;
-			}
-			else if (arr[0] < arr[1])
-			{
-				arr[2] = arr[0];
-				arr[1] = arr[1] - arr[0];
-				arr[0] = 0;
-			}
-		}
+			ft_positive(&arr);
 		else if (arr[0] < 0 && arr[1] < 0)
-		{
-			if (arr[0] >= arr[1])
-			{
-				arr[2] = arr[0];
-				arr[1] = arr[1] - arr[0];
-				arr[0] = 0;
-			}
-			else if (arr[0] <= arr[1])
-			{
-				arr[2] = arr[1];
-				arr[0] = arr[0] - arr[1];
-				arr[1] = 0;
-			}
-		}
+			ft_negative(&arr);
 		else
 			arr[2] = 0;
-		total_curr = ft_calculate_total(arr);
-		if (total == -1 || total_curr <= total)
+		if (total == -1 || ft_calculate_total(arr) <= total)
 		{
 			temp[0] = arr[0];
 			temp[1] = arr[1];
 			temp[2] = arr[2];
-			total = total_curr;
+			total = ft_calculate_total(arr);
 		}
 		current2 = current2->next;
 		i++;

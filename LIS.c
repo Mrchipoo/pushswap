@@ -89,12 +89,6 @@ void	ft_fill_lis4(t_lis *liss, int **squence, int arr[], int prev[])
 	}
 }
 
-t_lis	*ft_fill_lis5(t_lis **liss, int *squence)
-{
-	(*liss)->arr = squence;
-	return (*liss);
-}
-
 t_lis	*ft_main_lis(int arr[], int n)
 {
 	int		*str;

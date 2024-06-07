@@ -37,3 +37,41 @@ void	ft_free_stack(t_walo **head_a, t_walo **head_b, int mode)
 	}
 	exit(0);
 }
+
+t_lis	*ft_fill_lis5(t_lis **liss, int *squence)
+{
+	(*liss)->arr = squence;
+	return (*liss);
+}
+
+void	ft_positive(int arr[0][3])
+{
+	if (arr[0][0] >= arr[0][1])
+	{
+		arr[0][2] = arr[0][1];
+		arr[0][0] = arr[0][0] - arr[0][1];
+		arr[0][1] = 0;
+	}
+	else if (arr[0][0] < arr[0][1])
+	{
+		arr[0][2] = arr[0][0];
+		arr[0][1] = arr[0][1] - arr[0][0];
+		arr[0][0] = 0;
+	}
+}
+
+void	ft_negative(int arr[0][3])
+{
+	if (arr[0][0] >= arr[0][1])
+	{
+		arr[0][2] = arr[0][0];
+		arr[0][1] = arr[0][1] - arr[0][0];
+		arr[0][0] = 0;
+	}
+	else if (arr[0][0] <= arr[0][1])
+	{
+		arr[0][2] = arr[0][1];
+		arr[0][0] = arr[0][0] - arr[0][1];
+		arr[0][1] = 0;
+	}
+}

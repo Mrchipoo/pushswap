@@ -30,6 +30,8 @@ typedef struct t_lis
 }	t_lis;
 
 void	ft_push_2a(t_walo **head_a, t_walo **head_b);
+void	ft_negative(int arr[0][3]);
+void	ft_positive(int arr[0][3]);
 void	ft_action(t_walo **head_a, t_walo **head_b, int arr[3]);
 void	ft_do_it(t_walo **head, int rotate, int mode);
 void	ft_push_2b(t_walo **head_a, t_walo **head_b);
@@ -68,4 +70,5 @@ t_walo	*ft_find_min(t_walo *head);
 t_walo	*ft_diff(t_walo	*head, t_walo	*node);
 t_lis	*ft_array(t_walo *head);
 t_lis	*ft_main_lis(int arr[], int n);
+t_lis	*ft_fill_lis5(t_lis **liss, int *squence);
 #endif
