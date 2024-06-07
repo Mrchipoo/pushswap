@@ -26,9 +26,9 @@ typedef struct t_lis
 {
 	int	*arr;
 	int	len;
+	int	index;
 }	t_lis;
 
-void	print_list(t_walo *head, int mode);
 void	ft_push_2a(t_walo **head_a, t_walo **head_b);
 void	ft_action(t_walo **head_a, t_walo **head_b, int arr[3]);
 void	ft_do_it(t_walo **head, int rotate, int mode);
