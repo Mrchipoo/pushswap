@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CFLAGS=-Wall -Werror -Wextra -g3
-Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c utiliti/help.c sort/sort.c sort/quicksort.c split.c utiliti/libft.c node.c LIS.c calcul.c action.c free.c test.c
+Src = operation/push.c operation/rotate.c operation/swap.c operation/reverse_rotate.c utiliti/help.c sort/sort.c sort/quicksort.c split.c utiliti/libft.c node.c LIS.c calcul.c action.c free.c fill.c main.c 
 object = $(Src:.c=.o)
 NAME = push_swap
 
