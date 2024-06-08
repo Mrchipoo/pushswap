@@ -49,15 +49,27 @@ void	ft_check(t_walo **head_a, t_walo **head_b)
 	free(lis);
 }
 
-void	ft_before_cal(int *arr)
+void	ft_before_cal(int *arr, int n, int len)
 {
+	arr[1] = ft_min_rb(n, len - n);
 	arr[2] = 0;
 	if (arr[0] >= 0 && arr[1] >= 0)
 		ft_positive(arr);
 	else if (arr[0] < 0 && arr[1] < 0)
 		ft_negative(arr);
-	else    
+	else
 		arr[2] = 0;
+}
+
+int	ft_after_cal(int *arr, int *temp)
+{
+	int	total;
+
+	temp[0] = arr[0];
+	temp[1] = arr[1];
+	temp[2] = arr[2];
+	total = ft_calculate_total(arr);
+	return (total);
 }
 
 void	ft_calculate(t_walo **head_a, t_walo **head_b)
@@ -72,19 +84,13 @@ void	ft_calculate(t_walo **head_a, t_walo **head_b)
 	i = 0;
 	total = -1;
 	arr[0] = ft_find_target_a((*head_a), current2);
-	arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
+	arr[1] = ft_min_rb(i, ft_lenght(*head_b, 1, NULL) - i);
 	while (current2 != NULL)
 	{
 		arr[0] = ft_find_target_a((*head_a), current2);
-		arr[1] = ft_min_rb(i, (ft_lenght(*head_b, 1, NULL) - i));
-		ft_before_cal(arr);
+		ft_before_cal(arr, i, (ft_lenght(*head_b, 1, NULL)));
 		if (total == -1 || ft_calculate_total(arr) <= total)
-		{
-			temp[0] = arr[0];
-			temp[1] = arr[1];
-			temp[2] = arr[2];
-			total = ft_calculate_total(arr);
-		}
+			total = ft_after_cal(arr, temp);
 		current2 = current2->next;
 		i++;
 	}
